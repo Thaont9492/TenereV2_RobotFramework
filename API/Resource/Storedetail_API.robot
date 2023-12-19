@@ -3,6 +3,7 @@ Documentation    All APIs for Store Detail Page
 Library            RequestsLibrary
 Library            Collections
 Library            JSONLibrary
+Library            String
 Variables          ../../testdata/test_data.py
 
 *** Variable ***
@@ -103,3 +104,14 @@ Check info store of Sidebar
 Check info data of Today Top Codes, Saving tips and expired coupons
     Should Not Be Empty    ${respone.json()}[data]    topCoupons 
     Should Not Be Empty    ${respone.json()}[data]    savingTips
+
+Get Info of store
+    ${short_url}=    Get Value From Json    ${respone.json()}[data]   short_store_url
+    ${short_url}=    Convert Json To String    ${short_url}
+    ${short_url}=    Remove String        ${short_url}    ["    "]
+    Set Test Variable        ${short_url}
+    
+    ${count_coupon}=    Get Value From Json    ${respone.json()}[data]    coupons_count
+    ${count_coupon}=    Convert Json To String    ${count_coupon}
+    ${count_coupon}=    Remove String    ${count_coupon}    [    ]
+    Set Test Variable    ${count_coupon}

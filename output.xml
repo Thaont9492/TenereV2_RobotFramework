@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20231218 15:27:31.562" rpa="false" schemaversion="4">
+<suite id="s1" name="TenereV2 RobotFramework" source="D:\Script Python Test\TenereV2_RobotFramework">
+<suite id="s1-s1" name="Tests" source="D:\Script Python Test\TenereV2_RobotFramework\tests">
+<suite id="s1-s1-s1" name="test Review page" source="D:\Script Python Test\TenereV2_RobotFramework\tests\test_Review_page.robot">
+<test id="s1-s1-s1-t1" name="Test case 06: Test filter of review box" line="48">
+<kw name="Open The Browser" library="Base" type="SETUP">
+<arg>${browser}</arg>
+<arg>${url}</arg>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>${browser}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20231218 15:27:31.884" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20231218 15:27:31.884" endtime="20231218 15:27:33.287"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20231218 15:27:33.287" level="INFO">Opening url 'https://bogo:onads@ann-taylor.couponmay.com'</msg>
+<status status="PASS" starttime="20231218 15:27:33.287" endtime="20231218 15:27:34.109"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20231218 15:27:34.109" endtime="20231218 15:27:34.220"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:31.883" endtime="20231218 15:27:34.220"/>
+</kw>
+<kw name="Click Filter" library="Review_page">
+<arg>${Sort_Oldest_Review}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${SortByFilter_Review}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.221" level="INFO">Clicking element 'xpath://div[@class='filter-nav']/div[1]'.</msg>
+<status status="PASS" starttime="20231218 15:27:34.220" endtime="20231218 15:27:34.285"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${filter}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.286" level="INFO">Clicking element 'css:.cover-sortBy &gt; li:nth-of-type(2)'.</msg>
+<status status="PASS" starttime="20231218 15:27:34.285" endtime="20231218 15:27:34.324"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.220" endtime="20231218 15:27:34.324"/>
+</kw>
+<kw name="Check date of review items sort from oldest to newest" library="Review_page">
+<kw name="Create List" library="BuiltIn">
+<var>${dates}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20231218 15:27:34.325" level="INFO">${dates} = []</msg>
+<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.325"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>4</value>
+<value>12</value>
+<iter>
+<var name="${i}">4</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.348" level="INFO">${date} = Feb 13, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.348"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.348" endtime="20231218 15:27:34.348"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.348"/>
+</iter>
+<iter>
+<var name="${i}">5</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.373" level="INFO">${date} = Feb 13, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.348" endtime="20231218 15:27:34.373"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.373" endtime="20231218 15:27:34.373"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.348" endtime="20231218 15:27:34.374"/>
+</iter>
+<iter>
+<var name="${i}">6</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.390" level="INFO">${date} = Feb 13, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.374" endtime="20231218 15:27:34.390"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.390" endtime="20231218 15:27:34.390"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.374" endtime="20231218 15:27:34.390"/>
+</iter>
+<iter>
+<var name="${i}">7</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.406" level="INFO">${date} = Feb 12, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.390" endtime="20231218 15:27:34.406"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.406" endtime="20231218 15:27:34.406"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.390" endtime="20231218 15:27:34.406"/>
+</iter>
+<iter>
+<var name="${i}">8</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.421" level="INFO">${date} = Feb 12, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.406" endtime="20231218 15:27:34.421"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.421" endtime="20231218 15:27:34.422"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.406" endtime="20231218 15:27:34.422"/>
+</iter>
+<iter>
+<var name="${i}">9</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.434" level="INFO">${date} = Feb 11, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.422" endtime="20231218 15:27:34.434"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.434" endtime="20231218 15:27:34.434"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.422" endtime="20231218 15:27:34.434"/>
+</iter>
+<iter>
+<var name="${i}">10</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.449" level="INFO">${date} = Feb 10, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.434" endtime="20231218 15:27:34.449"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.449" endtime="20231218 15:27:34.449"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.434" endtime="20231218 15:27:34.450"/>
+</iter>
+<iter>
+<var name="${i}">11</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date}</var>
+<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20231218 15:27:34.480" level="INFO">${date} = Feb 8, 2023</msg>
+<status status="PASS" starttime="20231218 15:27:34.450" endtime="20231218 15:27:34.480"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${dates}</arg>
+<arg>${date}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20231218 15:27:34.480" endtime="20231218 15:27:34.480"/>
+</kw>
+<status status="PASS" starttime="20231218 15:27:34.450" endtime="20231218 15:27:34.480"/>
+</iter>
+<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.480"/>
+</for>
+<kw name="Log" library="BuiltIn">
+<arg>${dates}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231218 15:27:34.481" level="INFO">['Feb 13, 2023', 'Feb 13, 2023', 'Feb 13, 2023', 'Feb 12, 2023', 'Feb 12, 2023', 'Feb 11, 2023', 'Feb 10, 2023', 'Feb 8, 2023']</msg>
+<status status="PASS" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
+</kw>
+<kw name="Copy List" library="Collections">
+<var>${date}</var>
+<arg>${dates}</arg>
+<doc>Returns a copy of the given list.</doc>
+<msg timestamp="20231218 15:27:34.481" level="INFO">${date} = ['Feb 13, 2023', 'Feb 13, 2023', 'Feb 13, 2023', 'Feb 12, 2023', 'Feb 12, 2023', 'Feb 11, 2023', 'Feb 10, 2023', 'Feb 8, 2023']</msg>
+<status status="PASS" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
+</kw>
+<kw name="Sort List" library="Collections">
+<arg>${dates}</arg>
+<doc>Sorts the given list in place.</doc>
+<status status="PASS" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
+</kw>
+<kw name="Lists Should Be Equal" library="Collections">
+<arg>${date}</arg>
+<arg>${dates}</arg>
+<arg>msg=List is not sorted in ascending order</arg>
+<doc>Fails if given lists are unequal.</doc>
+<msg timestamp="20231218 15:27:34.481" level="FAIL">List is not sorted in ascending order
+Lists are different:
+Index 0: Feb 13, 2023 != Feb 10, 2023
+Index 1: Feb 13, 2023 != Feb 11, 2023
+Index 2: Feb 13, 2023 != Feb 12, 2023
+Index 4: Feb 12, 2023 != Feb 13, 2023
+Index 5: Feb 11, 2023 != Feb 13, 2023
+Index 6: Feb 10, 2023 != Feb 13, 2023</msg>
+<status status="FAIL" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
+</kw>
+<status status="FAIL" starttime="20231218 15:27:34.324" endtime="20231218 15:27:34.481"/>
+</kw>
+<status status="FAIL" starttime="20231218 15:27:31.883" endtime="20231218 15:27:34.482">List is not sorted in ascending order
+Lists are different:
+Index 0: Feb 13, 2023 != Feb 10, 2023
+Index 1: Feb 13, 2023 != Feb 11, 2023
+Index 2: Feb 13, 2023 != Feb 12, 2023
+Index 4: Feb 12, 2023 != Feb 13, 2023
+Index 5: Feb 11, 2023 != Feb 13, 2023
+Index 6: Feb 10, 2023 != Feb 13, 2023</status>
+</test>
+<doc>Testcases for Review page Tenere V2</doc>
+<status status="FAIL" starttime="20231218 15:27:31.582" endtime="20231218 15:27:34.483"/>
+</suite>
+<status status="FAIL" starttime="20231218 15:27:31.581" endtime="20231218 15:27:34.483"/>
+</suite>
+<status status="FAIL" starttime="20231218 15:27:31.564" endtime="20231218 15:27:34.484"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="TenereV2 RobotFramework">TenereV2 RobotFramework</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Tests">TenereV2 RobotFramework.Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="test Review page">TenereV2 RobotFramework.Tests.test Review page</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

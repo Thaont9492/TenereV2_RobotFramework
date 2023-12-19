@@ -1,49 +1,53 @@
 *** Setting ***
+Documentation    Testcases for Review page Tenere V2
+...
+...
+...
+Resource        ../page_objects/Review_page.robot
+Resource        ../page_objects/Base.robot
+Variables       ../testdata/test_data.py
+Variables       ../testdata/locators.py
+Test Setup      Open The Browser    ${browser}    ${url}
 
 *** Variable ***
+${browser}        Chrome
+${url}            ${REVIEW_URL}
 
 *** Keywords ***
 
 *** Test Cases ***
-# Test case 01: Check Title and Meta Desc
+Test case 01: Check Title, Meta Desc and Canonical
+    Check Title and Meta Desc and Canonical
 
-# Test case 02: Check link of Sidebar and Related Store - Popular Store is visible
-#    Button Write a Review
-#    Store Review
-#    Homepage
-#    Related Store visible
-#    Popular Store visible
+Test case 02: Check link of Sidebar and Related Store - Popular Store is visible
+    Check link Button Write a Review
+    Check info Store Review
+    Check info go to Store Detail
+    Check info Homepage
+    Check Related Store visible
+    Check Popular Store visible
 
-# Test case 03: Check header info
-#    Check rating and rated user is same with sidebar
-#    Title H1
-#    Link "Get Coupons" Btn
-#    Link "Go to website" Btn
+Test case 03: Check header info
+    Check about and pros - cons is visible
+    Check rating and rated user is same with sidebar
+    Check Title H1
+    Link "Get Coupons" Btn
+    Link "Go to website" Btn
 
-# Test case 04: Check info of content, Review Box, QA Box, Similar Store
-#    Assert Score with rating sidebar
-#----Review Box---#
-#    Check title Review Box (assert number with review item)
-#    Check link of button Write a Review
-#    Check All Review Item have name, star and date
-#----QA Box---#
-#    Check title QA Box
-#    Assert number question with Question items
-#----Similar Store Box---#
-#    Check Similar Store is visible and have 8 items
-#    Check link of title, button "add rating" of store
+Test case 04: Check info of content, Similar Store
+    Assert Score with rating header
+    Check Coupon Box, Review box, QA Box and Similar Store is visible
+    Check link of title, button "add rating" of similar store
 
-# Test case 05: Click Get Coupon/Deal
-#    Check title Coupon Box
-#    Check link "Get more Coupons" Btn
-#    Get info of coupon (title, verified day, uses, discount percent)
-#    Click First coupon
-#    Switch tab
-#    Check info of popup Get code/Get deal
+Test case 05: Click Get Coupon/Deal
+    Get title of coupon
+    Click First coupon
+    Switch Window    NEW
+    Check info of popup Get code/Get deal
 
-# Test case 06: Test filter of review box
-#    Click Filter Sort Oldest
-#    Check date of review items sort from oldest to newest
+Test case 06: Test filter of review box
+    Click Filter    ${Sort_Oldest_Review}
+    Check date of review items sort from oldest to newest
 #    Click Filter Sort Most Recent
 #    Check date of review items sort from newest to oldest
 #    Click Rating 4 stars

@@ -2,6 +2,7 @@
 Documentation    All APIs for Review Page
 Library            RequestsLibrary
 Library            Collections
+Library            String
 Library            JSONLibrary
 Variables          ../../testdata/test_data.py
 
@@ -10,6 +11,7 @@ ${base_url}    ${DOMAIN}/api/
 ${AUTH}        Basic Auth
 # Headers
 ${CONTENT_TYPE}    application/json
+
 
 
 *** Keywords ***
@@ -90,3 +92,15 @@ Check info store of Sidebar
     Should Not Be Empty    ${respone.json()}[data]    lastUpdatedCoupon
     Should Not Be Empty    ${respone.json()}[data]    rated_user_count
     Should Not Be Empty    ${respone.json()}[data]    rated_star
+    
+# Resource
+Get About and Pros & Cons of Store Review
+    ${about}=    Get Value From Json    ${respone.json()}[data]    about_coupon_cta
+    ${about}=    Convert Json To String    ${about}
+    ${about}=    Remove String    ${about}    ["    "]
+    Set Test Variable    ${about}
+    
+    ${pros}=    Get Value From Json    ${respone.json()}[data]    pros_and_cons
+    ${pros}=    Convert Json To String    ${pros}
+    ${pros}=    Remove String    ${pros}    ["    "]
+    Set Test Variable    ${pros}
