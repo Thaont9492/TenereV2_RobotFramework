@@ -1,63 +1,77 @@
 *** Setting ***
+Documentation    Testcases for Review page Tenere V2
+...
+...
+...
+Resource        ../page_objects/Storedetail_page.robot
+Resource        ../page_objects/Base.robot
+Variables       ../testdata/test_data.py
+Variables       ../testdata/locators.py
+Test Setup      Open Browser    ${url}    headless chrome
+Test Teardown    Close All Browsers
 
 *** Variable ***
-
+${url}            ${STORE_DETAIL_URL}
 
 *** Test Cases ***
-# Test case 01: Check Title and Meta Desc, link Breadcrumb
+Test case 01: Check Title, Meta Desc and Canonical
+    Check Title and Meta Desc and Canonical
 
-# Test case 02: Check link of Sidebar and Related Store - Popular Store, Competitor Store is visible
-#    Button Shop now
-#    Store Review
-#    Homepage
-#    Coupon Stats visible
-#    Recommended Stores visible and has 10 items
-#    Best Stores visible and has 10 items
-#    Competitor box visible and has 10 items
+Test case 02: Check link of Sidebar and Related Store - Popular Store, Competitor Store is visible
+    Check button Shop now
+    Check info Store Review
+    Check info Homepage    ${HomeSidebar_Store}
+    Recommended Stores visible and has more than 5 items
+    Best Stores visible and has more than 5 items
+    Competitor box visible and has more than 5 items
 
+Test case 03: Test info of header and content about
+    H1 title visible and has info of coupon stats
+    Check link of "Add rating" button
 
-# Test case 03: Test info of header and content
-#    H1 title visible and has info of coupon stats
-#    Check link "Install Tenere" button
-#    Check title "Apply + Store name + coupons with one click!"
-#    Check link of "Add rating" button
-#    Assert content of About Store is equal with Coupon Stats Sidebar
+Test case 04: Test Filter
+    Check filter coupon, all "Get Deal" is invisible
+    Check filter deal, all "Get Code" is invisible
+    Check Filter All Offers, all coupons is visible
+    Check Sort Verified
+    Check Sort Latest
+    Check Sort Best
+    Check Jumpto Today's Top, page will scroll to "box box-today-top" class
 
-# Test case 04: Test Filter
-#    Check filter coupon, all "Get Deal" is invisible
-#    Check filter deal, all "Get Code" is invisible
-#    Check Filter All Offers, all coupons is visible
-#    Check Sort Verified, //div[@class='box-coupon'][1]/h2 is "Verified + Store Name + Coupons"
-#    Check Sort Lastest, //div[@class='box-coupon'][1]/h2 is "Lastest + Store Name + Coupons"
-#    Check Sort Best, //div[@class='box-coupon'][1]/h2 is "Best + Store name + coupons"
-#    Check Jumpto Today's Top, site will scroll to "box box-today-top" class
+Test case 05: Test click Get Code and not open affiliate in second time, all coupons visible
+    Get info of title box coupon
+    # click getcode button
+    Click Button    ${Btn_GetCode_FirstCP}
+    Switch Window    NEW
+    Assert title and link
+    Click Button    ${Btn_Copy_Popup}
+    Action Copy code    ${Btn_Copy_Popup}
+    # click close popup
+    Click Element   ${Close_Popup}
+    Check all value coupon is visible
+    # click copy
+    Click Element    ${First_CopyBtn_Store}
+    Action Copy code    ${First_CopyBtn_Store}
+    Get info of title box coupon
+    Click Element          ${Title_FirstCP_Store}
+    Assert title and link
+    Click Element    ${Btn_Copy_Popup}
+    Action Copy code    ${Btn_Copy_Popup}
 
-# Test case 05: Test click Get Code and not open affiliate, all coupons visible
-#    Get info of title box coupon
-#    Click Get Code button
-#    Check Url is href of css:.d-block.mb-2
-#    Switch to New Tab
-#    Assert title, store name of popup get code
-#    Check Codes, button Copy and Box Extension is visible
-#    Click Copy Button and assert the value is equal with value of input, Copy -> Copied
-#    Click close popup xpath:///img[@alt='close']
-#    Check all value coupon is visible xpath://div[@class='coupon']/div[1]/div[1]/span
-#    Click Copy
-#    Check Copy -> Copied
-#    Get info of first box coupon get code ( title, value code)
-#    Click title
-#    Assert info with popup (title, value code)
-
-
-# Test case 06: Test click Get Deal
-#    Get info of title box coupon
-#    Click Get Deal button
-#    Check Url is href of css:.d-block.mb-2
-#    Switch to New Tab
-#    Assert title, store name of popup get deal
-#    Check desc ("Tip: No code needed!") and button "Continue to Store" is visible
-#    Click close popup xpath:///img[@alt='close']
-#    Check all value coupon is visible xpath://div[@class='coupon']/div[1]/div[1]/span
-#    Get info of first box coupon get deal
-#    Click title
-#    Assert info with popup (title) and "Continue to store" btn is visible
+Test case 06: Test click Get Deal
+    Get info of title box coupon
+    Click Button    ${Btn_GetDeal_FirstCP}
+    Switch Window    NEW
+    Assert title and link
+    Check info of Popup Get Deal
+    # click close popup
+    Click Element   ${Close_Popup}
+    Check all value coupon is visible
+    # click copy
+    Click Element    ${First_CopyBtn_Store}
+    Action Copy code    ${First_CopyBtn_Store}
+    Get info of title box coupon
+    Click Element          ${Title_FirstCP_Store}
+    Assert title and link
+    Click Element    ${Btn_Copy_Popup}
+    Action Copy code    ${Btn_Copy_Popup}

@@ -7,10 +7,10 @@ Resource        ../page_objects/Review_page.robot
 Resource        ../page_objects/Base.robot
 Variables       ../testdata/test_data.py
 Variables       ../testdata/locators.py
-Test Setup      Open The Browser    ${browser}    ${url}
+Test Setup      Open Browser    ${url}    headless chrome
+Test Teardown    Close All Browsers
 
 *** Variable ***
-${browser}        Chrome
 ${url}            ${REVIEW_URL}
 
 *** Keywords ***
@@ -23,7 +23,7 @@ Test case 02: Check link of Sidebar and Related Store - Popular Store is visible
     Check link Button Write a Review
     Check info Store Review
     Check info go to Store Detail
-    Check info Homepage
+    Check info Homepage    ${Homepage_Review}
     Check Related Store visible
     Check Popular Store visible
 
@@ -46,9 +46,13 @@ Test case 05: Click Get Coupon/Deal
     Check info of popup Get code/Get deal
 
 Test case 06: Test filter of review box
-    Click Filter    ${Sort_Oldest_Review}
+#    CLick Filter Sort Oldest
+    Review_page.Click Filter    ${Sort_Oldest_Review}
+    Sleep    3
     Check date of review items sort from oldest to newest
-#    Click Filter Sort Most Recent
+#    Click Filter Most Recent
+    Review_page.Click Filter    ${Sort_MostRecent_Review}
+    Sleep    3
 #    Check date of review items sort from newest to oldest
 #    Click Rating 4 stars
 #    Check all review items has 4 stars is visible

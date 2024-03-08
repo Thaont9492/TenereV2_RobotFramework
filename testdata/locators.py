@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 # ------ Locator Page Review ------
 # Header
 Title_H1_Review = "css:h1"
@@ -16,9 +14,10 @@ StoreReviewBtn_Review = "xpath://aside[@class='sidebar']/div/a[2]"
 StoreCouponBtn_Review = "xpath://aside[@class='sidebar']/div/a[3]"
 Homepage_Review = "xpath://aside[@class='sidebar']/div/a[4]"
 # Coupon Stats
-VerifiedCp_Review = "css:p:nth-of-type(2) > b"
-BestDiscount_Review = "css:p:nth-of-type(3) > b"
-CouponAvailable_Review = "css:p:nth-of-type(4) > b"
+AverageSaving_Stats = "css:p:nth-of-type(1) > b"
+VerifiedCp_Stats = "css:p:nth-of-type(2) > b"
+BestDiscount_Stats = "css:p:nth-of-type(3) > b"
+CouponAvailable_Stats = "css:p:nth-of-type(4) > b"
 # Content
 Overall_Rating_Review = "css:.left .score"
 CountReview_Review = "css:.count-review"
@@ -39,8 +38,6 @@ Sort_MostRecent_Review = "css:.cover-sortBy > li:nth-of-type(1)"
 Sort_Oldest_Review = "css:.cover-sortBy > li:nth-of-type(2)"
 RatingFilter_Review = "xpath://div[@class='filter-nav']/div[2]"
 Rating_All_Review = "css:.cover-rating > li:nth-of-type(1)"
-
-
 
 # QA Box
 QA_Box_Review = 'css:.box.box-question-answer'
@@ -63,17 +60,45 @@ Rating_SimilarFirst_Review = 'xpath://div[@class="store-grid"]/div[1]/div[2]/spa
 AddRating_SimilarFirst_Review = 'css:.store-grid > div:nth-of-type(1) .color-main > a'
 Category_SimilarFirst_Review = 'xpath://div[@class="store-grid"]/div[1]/div[2]/div[2]'
 
-
 # ------ Locator Page Store Detail ------
 # Sidebar
-ShopNowBtn_Store = By.CSS_SELECTOR, "a#shop-now"
-Logo_Store = By.CSS_SELECTOR, ".store-image > img"
-StoreRate_Store = By.CSS_SELECTOR, ".storeRate"
-RateUserCount_Store = By.CSS_SELECTOR, ".rateUserCount"
-LinkReview_Store = By.CSS_SELECTOR, ".box-sidebar-total-info .link:nth-child(7)"
-HomeSidebar_Store = By.CSS_SELECTOR, ".box-sidebar-total-info .link:nth-child(9)"
-StoreSidebar_Store = By.CSS_SELECTOR, ".box-sidebar-total-info .link:nth-child(8)"
-H3Sidebar_Store = By.CSS_SELECTOR, ".box-sidebar-total-info h3"
+ShopNowBtn_Store = "css:a#shop-now"
+Logo_Store = "css:.store-image > img"
+StoreRate_Store = "css:.storeRate"
+RateUserCount_Store = "css:.rateUserCount"
+LinkReview_Store = "xpath://aside[@class='sidebar']/div/a[2]"
+HomeSidebar_Store = "xpath://aside[@class='sidebar']/div/a[3]"
+StoreSidebar_Store = "css:.box-sidebar-total-info .link:nth-child(8)"
+H3Sidebar_Store = "css:.box-sidebar-total-info h3"
+RecommendedTitle_Store = "css:.sidebar .sidebar-group:nth-of-type(3)"
+BestTitle_Store = "css:.sidebar .sidebar-group:nth-of-type(4)"
+
+# Main Box
+Title_H1_Store = "css:.store-title"
+AddRating_Store = "css:.items-center > span > a"
+CompetitorTitle_Store = "css:.box-competitor-coupon"
+
+Filter_Store = "css:div#js-filter"
+Filter_Deal_Store = "css:.cover-filter > li:nth-of-type(3)"
+Filter_Coupon_Store = "css:.cover-filter > li:nth-of-type(2)"
+Fitler_All_Store = "css:.cover-filter > li:nth-of-type(1)"
+
+Sort_Store = "css:div#jsFilter > div:nth-of-type(2)"
+Sort_Verified_Store = "css:.cover-sort > li:nth-of-type(2)"
+Sort_Latest_Store = "css:.cover-sort > li:nth-of-type(3)"
+Sort_Best_Store = "css:.cover-sort > li:nth-of-type(1)"
+
+JumpTo_Store = "css:.item.jump"
+
 
 # Popup Get Code/Get Deal
+Title_FirstCP_Store = "xpath://div[@class='coupon'][1]//h3/span"
 Title_PopUp = "css:.coupon-name"
+Btn_GetCode_FirstCP = "xpah://button[@innertext='Get Code'][1]"
+Btn_Copy_Popup = "css:#btn-copy"
+Storename_Popup = "css:a#go-to-site"
+First_CopyBtn_Store = "xpath://button[@class='bg-[#578d3f] text-white h-[46px] px-4'][1]"
+Close_Popup = 'css:.shutdown'
+
+Btn_GetDeal_FirstCP = "xpath://button[@innertext='Get Deal'][1]"
+Btn_ContinueToStore_Popup = "css:.go-to"

@@ -7,7 +7,7 @@ Library            String
 Variables          ../../testdata/test_data.py
 
 *** Variable ***
-${base_url}    ${DOMAIN}/api/
+${base_url}    ${DOMAIN2}/api/
 ${AUTH}        Basic Auth
 # Headers
 ${CONTENT_TYPE}    application/json
@@ -115,3 +115,8 @@ Get Info of store
     ${count_coupon}=    Convert Json To String    ${count_coupon}
     ${count_coupon}=    Remove String    ${count_coupon}    [    ]
     Set Test Variable    ${count_coupon}
+    
+    ${link_go}=    Get Value From Json    ${respone.json()}[data][go]    foreign_key_right
+    ${link_go}=    Convert Json To String    ${link_go}
+    ${link_go}=    Remove String    ${link_go}    [    ]
+    Set Test Variable    ${link_go}

@@ -1,12 +1,15 @@
-LINK = "couponmay.com"
-SITE_NAME = "Couponmay"
-AUTHENTICATION = "bogo:onads@"
-STORE_NAME = "Ann Taylor"
-STORE_NAME_ALIAS = "ann-taylor"
+LINK = "tenereteam.com"
+SITE_NAME = "TenereTeam"
+AUTHENTICATION = ""
+STORE_NAME = "Udemy"
+STORE_NAME_UPPER = "UDEMY"
+STORE_NAME_ALIAS = "udemy"
 SUB_PAGE_ALIAS = "is-jolly-vintage-legit"
 STORE_SUBPAGE = "jolly-vintage"
 
-DOMAIN = "https://" + AUTHENTICATION + "couponmay.com"
-REVIEW_URL = "https://" + AUTHENTICATION + STORE_NAME_ALIAS + ".couponmay.com"
-STORE_DETAIL_URL = DOMAIN + "/store/" + STORE_NAME_ALIAS
+DOMAIN = "https://" + AUTHENTICATION + LINK
+DOMAIN2 = "https://couponmay.com"
+DOMAIN3 = "https://www." + LINK
+REVIEW_URL = "https://" + AUTHENTICATION + STORE_NAME_ALIAS + "." + LINK
+STORE_DETAIL_URL = "https://" + AUTHENTICATION + STORE_NAME_ALIAS + "." + LINK + "/coupons"
 SUB_PAGE_URL = DOMAIN + "/" + STORE_SUBPAGE + "/" + SUB_PAGE_ALIAS

@@ -1,256 +1,833 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20231218 15:27:31.562" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20240306 15:10:56.400" rpa="false" schemaversion="4">
 <suite id="s1" name="TenereV2 RobotFramework" source="D:\Script Python Test\TenereV2_RobotFramework">
 <suite id="s1-s1" name="Tests" source="D:\Script Python Test\TenereV2_RobotFramework\tests">
-<suite id="s1-s1-s1" name="test Review page" source="D:\Script Python Test\TenereV2_RobotFramework\tests\test_Review_page.robot">
-<test id="s1-s1-s1-t1" name="Test case 06: Test filter of review box" line="48">
-<kw name="Open The Browser" library="Base" type="SETUP">
-<arg>${browser}</arg>
+<suite id="s1-s1-s1" name="test Store detail" source="D:\Script Python Test\TenereV2_RobotFramework\tests\test_Store_detail.robot">
+<test id="s1-s1-s1-t1" name="Test case 01: Check Title, Meta Desc and Canonical" line="17">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
-<kw name="Create Webdriver" library="SeleniumLibrary">
-<arg>${browser}</arg>
-<doc>Creates an instance of Selenium WebDriver.</doc>
-<msg timestamp="20231218 15:27:31.884" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
-<status status="PASS" starttime="20231218 15:27:31.884" endtime="20231218 15:27:33.287"/>
+<arg>headless chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240306 15:10:56.732" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
+<status status="PASS" starttime="20240306 15:10:56.731" endtime="20240306 15:11:00.705"/>
 </kw>
-<kw name="Go To" library="SeleniumLibrary">
+<kw name="Check Title and Meta Desc and Canonical" library="Storedetail_page">
+<kw name="Get Date Time" library="Base">
+<kw name="Get Current Date" library="DateTime">
+<var>${date}</var>
+<arg>result_format=datetime</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20240306 15:11:00.708" level="INFO">${date} = 2024-03-06 15:11:00.708435</msg>
+<status status="PASS" starttime="20240306 15:11:00.707" endtime="20240306 15:11:00.708"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${month}</var>
+<arg>${date}</arg>
+<arg>result_format=%B</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20240306 15:11:00.708" level="INFO">${month} = March</msg>
+<status status="PASS" starttime="20240306 15:11:00.708" endtime="20240306 15:11:00.708"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${year}</var>
+<arg>${date}</arg>
+<arg>result_format=%Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20240306 15:11:00.709" level="INFO">${year} = 2024</msg>
+<status status="PASS" starttime="20240306 15:11:00.709" endtime="20240306 15:11:00.709"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${month}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240306 15:11:00.709" level="INFO">${month} = March</msg>
+<status status="PASS" starttime="20240306 15:11:00.709" endtime="20240306 15:11:00.710"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${year}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240306 15:11:00.710" level="INFO">${year} = 2024</msg>
+<status status="PASS" starttime="20240306 15:11:00.710" endtime="20240306 15:11:00.710"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:00.707" endtime="20240306 15:11:00.710"/>
+</kw>
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20240306 15:11:00.722" level="INFO">${title} = 100% OFF Udemy Coupon Codes - March 2024 Promo Codes</msg>
+<status status="PASS" starttime="20240306 15:11:00.710" endtime="20240306 15:11:00.722"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${best_discount}</var>
+<arg>${BestDiscount_Stats}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:00.760" level="INFO">${best_discount} = 100%</msg>
+<status status="PASS" starttime="20240306 15:11:00.723" endtime="20240306 15:11:00.760"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${availble_coupon}</var>
+<arg>${CouponAvailable_Stats}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:00.774" level="INFO">${availble_coupon} = 303</msg>
+<status status="PASS" starttime="20240306 15:11:00.760" endtime="20240306 15:11:00.774"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${title}</arg>
+<arg>${best_discount} OFF ${STORE_NAME} Coupon Codes - ${month} ${year} Promo Codes</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:00.774" endtime="20240306 15:11:00.774"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${meta_desc}</var>
+<arg>xpath=//meta[@name="description"]</arg>
+<arg>content</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240306 15:11:00.793" level="INFO">${meta_desc} = These 303 Available Udemy discount codes last updated TODAY can help you save Upto 100% OFF. Buy cheaper with Udemy coupons &amp; promo codes NOW!</msg>
+<status status="PASS" starttime="20240306 15:11:00.774" endtime="20240306 15:11:00.793"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${meta_desc}</arg>
+<arg>These ${availble_coupon} Available ${STORE_NAME} discount codes last updated TODAY can help you save Upto ${best_discount} OFF. Buy cheaper with ${STORE_NAME} coupons &amp; promo codes NOW!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:00.793" endtime="20240306 15:11:00.793"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${canonical}</var>
+<arg>xpath=//link[@rel="canonical"]</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240306 15:11:00.809" level="INFO">${canonical} = https://udemy.tenereteam.com/coupons/</msg>
+<status status="PASS" starttime="20240306 15:11:00.793" endtime="20240306 15:11:00.809"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${canonical}</arg>
+<arg>https://${STORE_NAME_ALIAS}.${LINK}/coupons/</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:00.809" endtime="20240306 15:11:00.809"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:00.706" endtime="20240306 15:11:00.809"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240306 15:11:00.809" endtime="20240306 15:11:07.093"/>
+</kw>
+<status status="PASS" starttime="20240306 15:10:56.731" endtime="20240306 15:11:07.093"/>
+</test>
+<test id="s1-s1-s1-t2" name="Test case 02: Check link of Sidebar and Related Store - Popular Store, Competitor Store is visible" line="20">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20231218 15:27:33.287" level="INFO">Opening url 'https://bogo:onads@ann-taylor.couponmay.com'</msg>
-<status status="PASS" starttime="20231218 15:27:33.287" endtime="20231218 15:27:34.109"/>
+<arg>headless chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240306 15:11:07.094" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
+<status status="PASS" starttime="20240306 15:11:07.094" endtime="20240306 15:11:11.078"/>
 </kw>
-<kw name="Maximize Browser Window" library="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20231218 15:27:34.109" endtime="20231218 15:27:34.220"/>
+<kw name="Check button Shop now" library="Storedetail_page">
+<kw name="Check Link Go" library="Base">
+<arg>${ShopNowBtn_Store}</arg>
+<arg>nofollow</arg>
+<kw name="Connect to Store API" library="Storedetail_API">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>storeAPI</arg>
+<arg>${base_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240306 15:11:11.080" level="INFO">Creating Session using : alias=storeAPI, url=https://couponmay.com/api/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.080"/>
 </kw>
-<status status="PASS" starttime="20231218 15:27:31.883" endtime="20231218 15:27:34.220"/>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADERS}</var>
+<arg>content-type=${CONTENT_TYPE}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240306 15:11:11.081" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
+<status status="PASS" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.081"/>
 </kw>
-<kw name="Click Filter" library="Review_page">
-<arg>${Sort_Oldest_Review}</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${SortByFilter_Review}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.221" level="INFO">Clicking element 'xpath://div[@class='filter-nav']/div[1]'.</msg>
-<status status="PASS" starttime="20231218 15:27:34.220" endtime="20231218 15:27:34.285"/>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${HEADERS}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20240306 15:11:11.082" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
+<status status="PASS" starttime="20240306 15:11:11.081" endtime="20240306 15:11:11.082"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${filter}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.286" level="INFO">Clicking element 'css:.cover-sortBy &gt; li:nth-of-type(2)'.</msg>
-<status status="PASS" starttime="20231218 15:27:34.285" endtime="20231218 15:27:34.324"/>
+<status status="PASS" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.082"/>
 </kw>
-<status status="PASS" starttime="20231218 15:27:34.220" endtime="20231218 15:27:34.324"/>
+<kw name="Request Store info" library="Storedetail_API">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${respone}</var>
+<arg>storeAPI</arg>
+<arg>store/${STORE_NAME_ALIAS}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240306 15:11:11.297" level="INFO">GET Request : url=https://couponmay.com/api/store/udemy 
+ path_url=/api/store/udemy 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240306 15:11:11.297" level="INFO">GET Response : url=https://couponmay.com/api/store/udemy 
+ status=401, reason=Unauthorized 
+ headers={'Date': 'Wed, 06 Mar 2024 08:11:11 GMT', 'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'WWW-Authenticate': 'Basic realm="Restricted Access"', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=u3D9oJ0X6ekCQhvauLcH7UH80C%2Br5yYb%2B6h0iUuy6C6CO8WdZxz%2Fz%2Fnrk1mznSLe5EKSxNXuu5B%2BFZg6nsxG5a9aeHyWW%2Bf8g6YbG8baeeWdR275QKLhHomoU557l0u2"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '8600dfa51b0c079a-HKG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=&lt;html&gt;
+&lt;head&gt;&lt;title&gt;401 Authorization Required&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;401 Authorization Required&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx/1.18.0 (Ubuntu)&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+ 
+ </msg>
+<msg timestamp="20240306 15:11:11.297" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: https://couponmay.com/api/store/udemy</msg>
+<status status="FAIL" starttime="20240306 15:11:11.082" endtime="20240306 15:11:11.300"/>
 </kw>
-<kw name="Check date of review items sort from oldest to newest" library="Review_page">
-<kw name="Create List" library="BuiltIn">
-<var>${dates}</var>
-<doc>Returns a list containing given items.</doc>
-<msg timestamp="20231218 15:27:34.325" level="INFO">${dates} = []</msg>
-<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.325"/>
-</kw>
-<for flavor="IN RANGE">
-<var>${i}</var>
-<value>4</value>
-<value>12</value>
-<iter>
-<var name="${i}">4</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.348" level="INFO">${date} = Feb 13, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.348"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.348" endtime="20231218 15:27:34.348"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.348"/>
-</iter>
-<iter>
-<var name="${i}">5</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.373" level="INFO">${date} = Feb 13, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.348" endtime="20231218 15:27:34.373"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.373" endtime="20231218 15:27:34.373"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.348" endtime="20231218 15:27:34.374"/>
-</iter>
-<iter>
-<var name="${i}">6</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.390" level="INFO">${date} = Feb 13, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.374" endtime="20231218 15:27:34.390"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.390" endtime="20231218 15:27:34.390"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.374" endtime="20231218 15:27:34.390"/>
-</iter>
-<iter>
-<var name="${i}">7</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.406" level="INFO">${date} = Feb 12, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.390" endtime="20231218 15:27:34.406"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.406" endtime="20231218 15:27:34.406"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.390" endtime="20231218 15:27:34.406"/>
-</iter>
-<iter>
-<var name="${i}">8</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.421" level="INFO">${date} = Feb 12, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.406" endtime="20231218 15:27:34.421"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.421" endtime="20231218 15:27:34.422"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.406" endtime="20231218 15:27:34.422"/>
-</iter>
-<iter>
-<var name="${i}">9</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.434" level="INFO">${date} = Feb 11, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.422" endtime="20231218 15:27:34.434"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.434" endtime="20231218 15:27:34.434"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.422" endtime="20231218 15:27:34.434"/>
-</iter>
-<iter>
-<var name="${i}">10</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.449" level="INFO">${date} = Feb 10, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.434" endtime="20231218 15:27:34.449"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.449" endtime="20231218 15:27:34.449"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.434" endtime="20231218 15:27:34.450"/>
-</iter>
-<iter>
-<var name="${i}">11</var>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${date}</var>
-<arg>css:div:nth-of-type(${i}) &gt; .review__date</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20231218 15:27:34.480" level="INFO">${date} = Feb 8, 2023</msg>
-<status status="PASS" starttime="20231218 15:27:34.450" endtime="20231218 15:27:34.480"/>
-</kw>
-<kw name="Append To List" library="Collections">
-<arg>${dates}</arg>
-<arg>${date}</arg>
-<doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20231218 15:27:34.480" endtime="20231218 15:27:34.480"/>
-</kw>
-<status status="PASS" starttime="20231218 15:27:34.450" endtime="20231218 15:27:34.480"/>
-</iter>
-<status status="PASS" starttime="20231218 15:27:34.325" endtime="20231218 15:27:34.480"/>
-</for>
 <kw name="Log" library="BuiltIn">
-<arg>${dates}</arg>
+<arg>${respone.text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231218 15:27:34.481" level="INFO">['Feb 13, 2023', 'Feb 13, 2023', 'Feb 13, 2023', 'Feb 12, 2023', 'Feb 12, 2023', 'Feb 11, 2023', 'Feb 10, 2023', 'Feb 8, 2023']</msg>
-<status status="PASS" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
 </kw>
-<kw name="Copy List" library="Collections">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${respone}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<status status="FAIL" starttime="20240306 15:11:11.082" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Get Info of store" library="Storedetail_API">
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${link_go}</var>
+<arg>${location}</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${rel_go}</var>
+<arg>${location}</arg>
+<arg>rel</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${target_go}</var>
+<arg>${location}</arg>
+<arg>target</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${type}</arg>
+<arg>${rel_go}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${target_go}</arg>
+<arg>_blank</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${link_go}</arg>
+<arg>${link_go}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<status status="FAIL" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.300"/>
+</kw>
+<status status="FAIL" starttime="20240306 15:11:11.079" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Check info Store Review" library="Base">
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Check info Homepage" library="Base">
+<arg>${HomeSidebar_Store}</arg>
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Recommended Stores visible and has more than 5 items" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Best Stores visible and has more than 5 items" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Competitor box visible and has more than 5 items" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240306 15:11:11.300" endtime="20240306 15:11:17.537"/>
+</kw>
+<status status="FAIL" starttime="20240306 15:11:07.094" endtime="20240306 15:11:17.537">HTTPError: 401 Client Error: Unauthorized for url: https://couponmay.com/api/store/udemy</status>
+</test>
+<test id="s1-s1-s1-t3" name="Test case 03: Test info of header and content about" line="28">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>headless chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240306 15:11:17.537" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
+<status status="PASS" starttime="20240306 15:11:17.537" endtime="20240306 15:11:21.487"/>
+</kw>
+<kw name="H1 title visible and has info of coupon stats" library="Storedetail_page">
+<kw name="Get Date Time" library="Base">
+<kw name="Get Current Date" library="DateTime">
 <var>${date}</var>
-<arg>${dates}</arg>
-<doc>Returns a copy of the given list.</doc>
-<msg timestamp="20231218 15:27:34.481" level="INFO">${date} = ['Feb 13, 2023', 'Feb 13, 2023', 'Feb 13, 2023', 'Feb 12, 2023', 'Feb 12, 2023', 'Feb 11, 2023', 'Feb 10, 2023', 'Feb 8, 2023']</msg>
-<status status="PASS" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
+<arg>result_format=datetime</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20240306 15:11:21.489" level="INFO">${date} = 2024-03-06 15:11:21.488659</msg>
+<status status="PASS" starttime="20240306 15:11:21.488" endtime="20240306 15:11:21.489"/>
 </kw>
-<kw name="Sort List" library="Collections">
-<arg>${dates}</arg>
-<doc>Sorts the given list in place.</doc>
-<status status="PASS" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
-</kw>
-<kw name="Lists Should Be Equal" library="Collections">
+<kw name="Convert Date" library="DateTime">
+<var>${month}</var>
 <arg>${date}</arg>
-<arg>${dates}</arg>
-<arg>msg=List is not sorted in ascending order</arg>
-<doc>Fails if given lists are unequal.</doc>
-<msg timestamp="20231218 15:27:34.481" level="FAIL">List is not sorted in ascending order
-Lists are different:
-Index 0: Feb 13, 2023 != Feb 10, 2023
-Index 1: Feb 13, 2023 != Feb 11, 2023
-Index 2: Feb 13, 2023 != Feb 12, 2023
-Index 4: Feb 12, 2023 != Feb 13, 2023
-Index 5: Feb 11, 2023 != Feb 13, 2023
-Index 6: Feb 10, 2023 != Feb 13, 2023</msg>
-<status status="FAIL" starttime="20231218 15:27:34.481" endtime="20231218 15:27:34.481"/>
+<arg>result_format=%B</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20240306 15:11:21.489" level="INFO">${month} = March</msg>
+<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
 </kw>
-<status status="FAIL" starttime="20231218 15:27:34.324" endtime="20231218 15:27:34.481"/>
+<kw name="Convert Date" library="DateTime">
+<var>${year}</var>
+<arg>${date}</arg>
+<arg>result_format=%Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20240306 15:11:21.489" level="INFO">${year} = 2024</msg>
+<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
 </kw>
-<status status="FAIL" starttime="20231218 15:27:31.883" endtime="20231218 15:27:34.482">List is not sorted in ascending order
-Lists are different:
-Index 0: Feb 13, 2023 != Feb 10, 2023
-Index 1: Feb 13, 2023 != Feb 11, 2023
-Index 2: Feb 13, 2023 != Feb 12, 2023
-Index 4: Feb 12, 2023 != Feb 13, 2023
-Index 5: Feb 11, 2023 != Feb 13, 2023
-Index 6: Feb 10, 2023 != Feb 13, 2023</status>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${month}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240306 15:11:21.489" level="INFO">${month} = March</msg>
+<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${year}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240306 15:11:21.489" level="INFO">${year} = 2024</msg>
+<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:21.488" endtime="20240306 15:11:21.489"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${Title_H1_Store}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240306 15:11:21.508" level="INFO">Element 'css:.store-title' is displayed.</msg>
+<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.508"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${title_h1}</var>
+<arg>${Title_H1_Store}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:21.520" level="INFO">${title_h1} = Udemy Coupons &amp; Promo Codes with 100% off (303 Working Codes) March 2024</msg>
+<status status="PASS" starttime="20240306 15:11:21.508" endtime="20240306 15:11:21.520"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${best_discount}</var>
+<arg>${BestDiscount_Stats}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:21.529" level="INFO">${best_discount} = 100%</msg>
+<status status="PASS" starttime="20240306 15:11:21.521" endtime="20240306 15:11:21.529"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${availble_cp}</var>
+<arg>${CouponAvailable_Stats}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:21.544" level="INFO">${availble_cp} = 303</msg>
+<status status="PASS" starttime="20240306 15:11:21.529" endtime="20240306 15:11:21.544"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${title_h1}</arg>
+<arg>${STORE_NAME} Coupons &amp; Promo Codes with ${best_discount} off (${availble_cp} Working Codes) ${month} ${year}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:21.545" endtime="20240306 15:11:21.545"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:21.488" endtime="20240306 15:11:21.545"/>
+</kw>
+<kw name="Check link of &quot;Add rating&quot; button" library="Storedetail_page">
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<var>${link_add_rating_btn}</var>
+<arg>${AddRating_Store}</arg>
+<arg>href</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<msg timestamp="20240306 15:11:21.561" level="INFO">${link_add_rating_btn} = https://udemy.tenereteam.com/</msg>
+<status status="PASS" starttime="20240306 15:11:21.545" endtime="20240306 15:11:21.561"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${link_add_rating_btn}</arg>
+<arg>${REVIEW_URL}/</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:21.561" endtime="20240306 15:11:21.561"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:21.545" endtime="20240306 15:11:21.561"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240306 15:11:21.561" endtime="20240306 15:11:27.766"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:17.537" endtime="20240306 15:11:27.766"/>
+</test>
+<test id="s1-s1-s1-t4" name="Test case 04: Test Filter" line="32">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>headless chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240306 15:11:27.773" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
+<status status="PASS" starttime="20240306 15:11:27.772" endtime="20240306 15:11:31.721"/>
+</kw>
+<kw name="Check filter coupon, all &quot;Get Deal&quot; is invisible" library="Storedetail_page">
+<kw name="Click Filter" library="Base">
+<arg>${Filter_Coupon_Store}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Filter_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:31.724" level="INFO">Clicking element 'css:div#js-filter'.</msg>
+<status status="PASS" starttime="20240306 15:11:31.723" endtime="20240306 15:11:31.781"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${filter_item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:31.781" level="INFO">Clicking element 'css:.cover-filter &gt; li:nth-of-type(2)'.</msg>
+<status status="PASS" starttime="20240306 15:11:31.781" endtime="20240306 15:11:31.823"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:31.723" endtime="20240306 15:11:31.823"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>xpath://div[@class='coupon']//button[@innertext='Get Deal']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20240306 15:11:31.836" level="INFO">Element 'xpath://div[@class='coupon']//button[@innertext='Get Deal']' did not exist.</msg>
+<status status="PASS" starttime="20240306 15:11:31.823" endtime="20240306 15:11:31.836"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:31.722" endtime="20240306 15:11:31.837"/>
+</kw>
+<kw name="Check filter deal, all &quot;Get Code&quot; is invisible" library="Storedetail_page">
+<kw name="Click Filter" library="Base">
+<arg>${Filter_Deal_Store}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Filter_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:31.837" level="INFO">Clicking element 'css:div#js-filter'.</msg>
+<status status="PASS" starttime="20240306 15:11:31.837" endtime="20240306 15:11:31.859"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${filter_item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:31.859" level="INFO">Clicking element 'css:.cover-filter &gt; li:nth-of-type(3)'.</msg>
+<status status="PASS" starttime="20240306 15:11:31.859" endtime="20240306 15:11:31.900"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:31.837" endtime="20240306 15:11:31.900"/>
+</kw>
+<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
+<arg>xpath://div[@class='coupon']//button[@innertext='Get Code']</arg>
+<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
+<msg timestamp="20240306 15:11:31.910" level="INFO">Element 'xpath://div[@class='coupon']//button[@innertext='Get Code']' did not exist.</msg>
+<status status="PASS" starttime="20240306 15:11:31.900" endtime="20240306 15:11:31.910"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:31.837" endtime="20240306 15:11:31.910"/>
+</kw>
+<kw name="Check Filter All Offers, all coupons is visible" library="Storedetail_page">
+<kw name="Click Filter" library="Base">
+<arg>${Fitler_All_Store}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Filter_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:31.911" level="INFO">Clicking element 'css:div#js-filter'.</msg>
+<status status="PASS" starttime="20240306 15:11:31.911" endtime="20240306 15:11:31.935"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${filter_item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:31.935" level="INFO">Clicking element 'css:.cover-filter &gt; li:nth-of-type(1)'.</msg>
+<status status="PASS" starttime="20240306 15:11:31.935" endtime="20240306 15:11:31.983"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:31.911" endtime="20240306 15:11:31.983"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>css:.btn.get-btn.get-deal.go.order-sm-3</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240306 15:11:32.022" level="INFO">Element 'css:.btn.get-btn.get-deal.go.order-sm-3' is displayed.</msg>
+<status status="PASS" starttime="20240306 15:11:31.983" endtime="20240306 15:11:32.022"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>css:.btn.get-btn.get-code.go.order-sm-3</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240306 15:11:32.042" level="INFO">Element 'css:.btn.get-btn.get-code.go.order-sm-3' is displayed.</msg>
+<status status="PASS" starttime="20240306 15:11:32.028" endtime="20240306 15:11:32.042"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:31.910" endtime="20240306 15:11:32.042"/>
+</kw>
+<kw name="Check Sort Verified" library="Storedetail_page">
+<kw name="Click Sort" library="Base">
+<arg>${Sort_Verified_Store}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Sort_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:32.042" level="INFO">Clicking element 'css:div#jsFilter &gt; div:nth-of-type(2)'.</msg>
+<status status="PASS" starttime="20240306 15:11:32.042" endtime="20240306 15:11:33.655"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${sort_item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.655" level="INFO">Clicking element 'css:.cover-sort &gt; li:nth-of-type(2)'.</msg>
+<status status="PASS" starttime="20240306 15:11:33.655" endtime="20240306 15:11:33.721"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:32.042" endtime="20240306 15:11:33.721"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>css:div#verified-Coupons-of-${STORE_NAME}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240306 15:11:33.737" level="INFO">Element 'css:div#verified-Coupons-of-Udemy' is displayed.</msg>
+<status status="PASS" starttime="20240306 15:11:33.723" endtime="20240306 15:11:33.737"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${tag_title}</var>
+<arg>xpath://div[@class='box-coupon'][1]/h2</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.751" level="INFO">${tag_title} = VERIFIED COUPONS OF UDEMY</msg>
+<status status="PASS" starttime="20240306 15:11:33.737" endtime="20240306 15:11:33.751"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${tag_title}</arg>
+<arg>VERIFIED COUPONS OF ${STORE_NAME_UPPER}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.751"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:32.042" endtime="20240306 15:11:33.751"/>
+</kw>
+<kw name="Check Sort Latest" library="Storedetail_page">
+<kw name="Click Sort" library="Base">
+<arg>${Sort_Latest_Store}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Sort_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.751" level="INFO">Clicking element 'css:div#jsFilter &gt; div:nth-of-type(2)'.</msg>
+<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.780"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${sort_item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.780" level="INFO">Clicking element 'css:.cover-sort &gt; li:nth-of-type(3)'.</msg>
+<status status="PASS" starttime="20240306 15:11:33.780" endtime="20240306 15:11:33.824"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.824"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>css:div#latest-Coupons-of-${STORE_NAME}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240306 15:11:33.840" level="INFO">Element 'css:div#latest-Coupons-of-Udemy' is displayed.</msg>
+<status status="PASS" starttime="20240306 15:11:33.824" endtime="20240306 15:11:33.840"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${tag_title}</var>
+<arg>xpath://div[@class='box-coupon'][1]/h2</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.848" level="INFO">${tag_title} = LATEST COUPONS OF UDEMY</msg>
+<status status="PASS" starttime="20240306 15:11:33.840" endtime="20240306 15:11:33.848"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${tag_title}</arg>
+<arg>LATEST COUPONS OF ${STORE_NAME_UPPER}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.848"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.848"/>
+</kw>
+<kw name="Check Sort Best" library="Storedetail_page">
+<kw name="Click Sort" library="Base">
+<arg>${Sort_Best_Store}</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Sort_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.855" level="INFO">Clicking element 'css:div#jsFilter &gt; div:nth-of-type(2)'.</msg>
+<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.877"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${sort_item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.877" level="INFO">Clicking element 'css:.cover-sort &gt; li:nth-of-type(1)'.</msg>
+<status status="PASS" starttime="20240306 15:11:33.877" endtime="20240306 15:11:33.935"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.935"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>css:div#${STORE_NAME_ALIAS}-best-coupons</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20240306 15:11:33.952" level="INFO">Element 'css:div#udemy-best-coupons' is displayed.</msg>
+<status status="PASS" starttime="20240306 15:11:33.935" endtime="20240306 15:11:33.952"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${tag_title}</var>
+<arg>xpath://div[@class='box-coupon'][1]/h2</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.959" level="INFO">${tag_title} = BEST UDEMY COUPONS</msg>
+<status status="PASS" starttime="20240306 15:11:33.953" endtime="20240306 15:11:33.959"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${tag_title}</arg>
+<arg>BEST ${STORE_NAME_UPPER} COUPONS</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240306 15:11:33.959" endtime="20240306 15:11:33.959"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.959"/>
+</kw>
+<kw name="Check Jumpto Today's Top, page will scroll to &quot;box box-today-top&quot; class" library="Storedetail_page">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<var>${before_scroll}</var>
+<arg>return [window.scrollX, window.scrollY]</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20240306 15:11:33.966" level="INFO">Executing JavaScript:
+return [window.scrollX, window.scrollY]
+Without any arguments.</msg>
+<msg timestamp="20240306 15:11:33.967" level="INFO">${before_scroll} = [0, 0]</msg>
+<status status="PASS" starttime="20240306 15:11:33.959" endtime="20240306 15:11:33.967"/>
+</kw>
+<kw name="Click JumpTo" library="Base">
+<arg>xpath:/html//div[@id='jsFilter']//a[@href='#${STORE_NAME_ALIAS}-today-top']</arg>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${JumpTo_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:33.967" level="INFO">Clicking element 'css:.item.jump'.</msg>
+<status status="PASS" starttime="20240306 15:11:33.967" endtime="20240306 15:11:34.013"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${jumpto_item}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:34.013" level="INFO">Clicking element 'xpath:/html//div[@id='jsFilter']//a[@href='#udemy-today-top']'.</msg>
+<status status="PASS" starttime="20240306 15:11:34.013" endtime="20240306 15:11:34.052"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:33.967" endtime="20240306 15:11:34.052"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<var>${after_scroll}</var>
+<arg>return [window.scrollX, window.scrollY]</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20240306 15:11:34.052" level="INFO">Executing JavaScript:
+return [window.scrollX, window.scrollY]
+Without any arguments.</msg>
+<msg timestamp="20240306 15:11:34.061" level="INFO">${after_scroll} = [0, 4618.2529296875]</msg>
+<status status="PASS" starttime="20240306 15:11:34.052" endtime="20240306 15:11:34.061"/>
+</kw>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<arg>${before_scroll}</arg>
+<arg>${after_scroll}</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="PASS" starttime="20240306 15:11:34.061" endtime="20240306 15:11:34.061"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>css:.box-today-top</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20240306 15:11:34.079" level="INFO">Current page contains element 'css:.box-today-top'.</msg>
+<status status="PASS" starttime="20240306 15:11:34.061" endtime="20240306 15:11:34.079"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:33.959" endtime="20240306 15:11:34.079"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240306 15:11:34.079" endtime="20240306 15:11:40.320"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:27.766" endtime="20240306 15:11:40.320"/>
+</test>
+<test id="s1-s1-s1-t5" name="Test case 05: Test click Get Code and not open affiliate in second time, all coupons visible" line="41">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>headless chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240306 15:11:40.323" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
+<status status="PASS" starttime="20240306 15:11:40.323" endtime="20240306 15:11:42.343"/>
+</kw>
+<kw name="Get info of title box coupon" library="Storedetail_page">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${title_cp}</var>
+<arg>${Title_FirstCP_Store}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:42.411" level="INFO">${title_cp} = Use This Udemy Coupon Code To Save Up To 85% OFF For Sitewide. Shop Now!</msg>
+<status status="PASS" starttime="20240306 15:11:42.343" endtime="20240306 15:11:42.411"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${title_cp}</var>
+<arg>${title_cp}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240306 15:11:42.411" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
+<status status="PASS" starttime="20240306 15:11:42.411" endtime="20240306 15:11:42.411"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${title_cp}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240306 15:11:42.411" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
+<status status="PASS" starttime="20240306 15:11:42.411" endtime="20240306 15:11:42.411"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:42.343" endtime="20240306 15:11:42.411"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Btn_GetCode_FirstCP}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:42.417" level="INFO">Clicking button 'xpah://button[@innertext='Get Code'][1]'.</msg>
+<msg timestamp="20240306 15:11:42.625" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-23.png"&gt;&lt;img src="selenium-screenshot-23.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20240306 15:11:42.625" level="FAIL">Button with locator 'xpah://button[@innertext='Get Code'][1]' not found.</msg>
+<status status="FAIL" starttime="20240306 15:11:42.411" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>NEW</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Assert title and link" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Btn_Copy_Popup}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Action Copy code" library="Storedetail_page">
+<arg>${Btn_Copy_Popup}</arg>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Close_Popup}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Check all value coupon is visible" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${First_CopyBtn_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Action Copy code" library="Storedetail_page">
+<arg>${First_CopyBtn_Store}</arg>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Get info of title box coupon" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Title_FirstCP_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Assert title and link" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Btn_Copy_Popup}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Action Copy code" library="Storedetail_page">
+<arg>${Btn_Copy_Popup}</arg>
+<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240306 15:11:42.681" endtime="20240306 15:11:48.903"/>
+</kw>
+<status status="FAIL" starttime="20240306 15:11:40.320" endtime="20240306 15:11:48.903">Button with locator 'xpah://button[@innertext='Get Code'][1]' not found.</status>
+</test>
+<test id="s1-s1-s1-t6" name="Test case 06: Test click Get Deal" line="61">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${url}</arg>
+<arg>headless chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240306 15:11:48.903" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
+<status status="PASS" starttime="20240306 15:11:48.903" endtime="20240306 15:11:52.794"/>
+</kw>
+<kw name="Get info of title box coupon" library="Storedetail_page">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${title_cp}</var>
+<arg>${Title_FirstCP_Store}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:52.813" level="INFO">${title_cp} = Use This Udemy Coupon Code To Save Up To 85% OFF For Sitewide. Shop Now!</msg>
+<status status="PASS" starttime="20240306 15:11:52.795" endtime="20240306 15:11:52.813"/>
+</kw>
+<kw name="Convert To Lower Case" library="String">
+<var>${title_cp}</var>
+<arg>${title_cp}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20240306 15:11:52.813" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
+<status status="PASS" starttime="20240306 15:11:52.813" endtime="20240306 15:11:52.813"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${title_cp}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240306 15:11:52.813" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
+<status status="PASS" starttime="20240306 15:11:52.813" endtime="20240306 15:11:52.813"/>
+</kw>
+<status status="PASS" starttime="20240306 15:11:52.794" endtime="20240306 15:11:52.813"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${Btn_GetDeal_FirstCP}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20240306 15:11:52.819" level="INFO">Clicking button 'xpath://button[@innertext='Get Deal'][1]'.</msg>
+<msg timestamp="20240306 15:11:52.911" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-24.png"&gt;&lt;img src="selenium-screenshot-24.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20240306 15:11:52.911" level="FAIL">Button with locator 'xpath://button[@innertext='Get Deal'][1]' not found.</msg>
+<status status="FAIL" starttime="20240306 15:11:52.813" endtime="20240306 15:11:52.911"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>NEW</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
+</kw>
+<kw name="Assert title and link" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
+</kw>
+<kw name="Check info of Popup Get Deal" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Close_Popup}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
+</kw>
+<kw name="Check all value coupon is visible" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${First_CopyBtn_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
+</kw>
+<kw name="Action Copy code" library="Storedetail_page">
+<arg>${First_CopyBtn_Store}</arg>
+<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
+</kw>
+<kw name="Get info of title box coupon" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Title_FirstCP_Store}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
+</kw>
+<kw name="Assert title and link" library="Storedetail_page">
+<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Btn_Copy_Popup}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
+</kw>
+<kw name="Action Copy code" library="Storedetail_page">
+<arg>${Btn_Copy_Popup}</arg>
+<status status="NOT RUN" starttime="20240306 15:11:52.918" endtime="20240306 15:11:52.918"/>
+</kw>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20240306 15:11:52.918" endtime="20240306 15:11:59.119"/>
+</kw>
+<status status="FAIL" starttime="20240306 15:11:48.903" endtime="20240306 15:11:59.119">Button with locator 'xpath://button[@innertext='Get Deal'][1]' not found.</status>
 </test>
 <doc>Testcases for Review page Tenere V2</doc>
-<status status="FAIL" starttime="20231218 15:27:31.582" endtime="20231218 15:27:34.483"/>
+<status status="FAIL" starttime="20240306 15:10:56.422" endtime="20240306 15:11:59.119"/>
 </suite>
-<status status="FAIL" starttime="20231218 15:27:31.581" endtime="20231218 15:27:34.483"/>
+<status status="FAIL" starttime="20240306 15:10:56.421" endtime="20240306 15:11:59.119"/>
 </suite>
-<status status="FAIL" starttime="20231218 15:27:31.564" endtime="20231218 15:27:34.484"/>
+<status status="FAIL" starttime="20240306 15:10:56.402" endtime="20240306 15:11:59.125"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="3" fail="3" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="TenereV2 RobotFramework">TenereV2 RobotFramework</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1" name="Tests">TenereV2 RobotFramework.Tests</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="test Review page">TenereV2 RobotFramework.Tests.test Review page</stat>
+<stat pass="3" fail="3" skip="0" id="s1" name="TenereV2 RobotFramework">TenereV2 RobotFramework</stat>
+<stat pass="3" fail="3" skip="0" id="s1-s1" name="Tests">TenereV2 RobotFramework.Tests</stat>
+<stat pass="3" fail="3" skip="0" id="s1-s1-s1" name="test Store detail">TenereV2 RobotFramework.Tests.test Store detail</stat>
 </suite>
 </statistics>
 <errors>
