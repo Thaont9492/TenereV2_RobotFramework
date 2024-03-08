@@ -10,6 +10,7 @@ STORE_SUBPAGE = "jolly-vintage"
 DOMAIN = "https://" + AUTHENTICATION + LINK
 DOMAIN2 = "https://couponmay.com"
 DOMAIN3 = "https://www." + LINK
+DOMAIN_API = "https://api-test.couponego.com"
 REVIEW_URL = "https://" + AUTHENTICATION + STORE_NAME_ALIAS + "." + LINK
 STORE_DETAIL_URL = "https://" + AUTHENTICATION + STORE_NAME_ALIAS + "." + LINK + "/coupons"
 SUB_PAGE_URL = DOMAIN + "/" + STORE_SUBPAGE + "/" + SUB_PAGE_ALIAS

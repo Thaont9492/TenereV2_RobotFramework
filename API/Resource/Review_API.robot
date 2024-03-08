@@ -7,7 +7,7 @@ Library            JSONLibrary
 Variables          ../../testdata/test_data.py
 
 *** Variable ***
-${base_url}    ${DOMAIN}/api/
+${base_url}    ${DOMAIN_API}/api/
 ${AUTH}        Basic Auth
 # Headers
 ${CONTENT_TYPE}    application/json

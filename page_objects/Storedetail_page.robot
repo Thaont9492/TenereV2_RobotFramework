@@ -95,16 +95,18 @@ Check Jumpto Today's Top, page will scroll to "box box-today-top" class
 
 # Testcase 05
 Get info of title box coupon
-    ${title_cp}=    Get Text    ${Title_FirstCP_Store}
+    [Arguments]    ${title_of_cp}
+    ${title_cp}=    Get Text    ${title_of_cp}
     ${title_cp}=    Convert To Lower Case    ${title_cp}   
     Set Global Variable    ${title_cp}
 
 Assert title and link
-    Sleep    3
+    [Arguments]    ${Store_name_popup}
+    Sleep    5
     ${title_popup}=    Get Text    ${Title_Popup}
     ${title_popup}=    Convert To Lower Case    ${title_popup}
     Should Be Equal As Strings    ${title_cp}    ${title_popup}
-    Check Link Go    ${Storename_Popup}    noopener
+    Check Link Go    ${Store_name_popup}    noopener
     ${link_FAQ}=    Get Element Attribute        css:.help > a    href
     Should Be Equal As Strings    ${link_FAQ}    ${DOMAIN3}/faq-page
     ${link_login}=    Get Element Attribute    css:.already-have > a    href

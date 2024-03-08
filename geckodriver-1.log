@@ -1,0 +1,26 @@
+1709882514493	geckodriver	INFO	Listening on 127.0.0.1:57871
+1709882517574	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "57872" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\thaon\\AppData\\Local\\Temp\\rust_mozprofileTJKME9"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1709882518014	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1709882518076	Marionette	INFO	Listening on port 57887
+Read port: 57887
+WebDriver BiDi listening on ws://127.0.0.1:57872
+1709882518231	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:57872/devtools/browser/8f417cce-da78-4c7e-b63d-16ea234dd2de
+1709882522006	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript error: https://www.udemy.com/staticx/udemy/js/webpack/entry-main-vendor.5d284c2d2be0091940ab.js, line 2: Error: Request failed with status code 403
+JavaScript error: https://www.udemy.com/staticx/udemy/js/webpack/entry-main-vendor.5d284c2d2be0091940ab.js, line 2: Error: Request failed with status code 403
+JavaScript error: https://www.udemy.com/staticx/udemy/js/webpack/entry-main-vendor.5d284c2d2be0091940ab.js, line 2: Error: Request failed with status code 403
+JavaScript error: https://www.udemy.com/staticx/udemy/js/webpack/entry-main-vendor.5d284c2d2be0091940ab.js, line 2: Error: Request failed with status code 403
+JavaScript error: https://www.udemy.com/staticx/udemy/js/webpack/entry-main-vendor.5d284c2d2be0091940ab.js, line 2: Error: Request failed with status code 403
+1709882532697	Marionette	INFO	Stopped listening on port 57887
+JavaScript warning: https://mc.yandex.ru/metrika/tag.js, line 137: Script terminated by timeout at:
+B/<@https://mc.yandex.ru/metrika/tag.js:137:449
+
+JavaScript warning: https://www.udemy.com/staticx/udemy/js/webpack/discovery-common.bf3732e24b46a78542de.js, line 2: Script terminated by timeout at:
+m@https://www.udemy.com/staticx/udemy/js/webpack/discovery-common.bf3732e24b46a78542de.js:2:665058
+./node_modules/react-query/es/core/retryer.js/e/e/</<@https://www.udemy.com/staticx/udemy/js/webpack/discovery-common.bf3732e24b46a78542de.js:2:693949
+
+Dynamically enable window occlusion 1

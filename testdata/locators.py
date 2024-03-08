@@ -94,11 +94,13 @@ JumpTo_Store = "css:.item.jump"
 # Popup Get Code/Get Deal
 Title_FirstCP_Store = "xpath://div[@class='coupon'][1]//h3/span"
 Title_PopUp = "css:.coupon-name"
-Btn_GetCode_FirstCP = "xpah://button[@innertext='Get Code'][1]"
+Btn_GetCode_FirstCP = "css:div#udemy-best-coupons > div:nth-of-type(1) > .top > .btn.get-btn.get-code.go.order-sm-3"
 Btn_Copy_Popup = "css:#btn-copy"
-Storename_Popup = "css:a#go-to-site"
+Storename_Popup_CP = "css:a#go-to-site"
+Storename_Popup_Deal = "css:.go-to"
 First_CopyBtn_Store = "xpath://button[@class='bg-[#578d3f] text-white h-[46px] px-4'][1]"
 Close_Popup = 'css:.shutdown'
 
-Btn_GetDeal_FirstCP = "xpath://button[@innertext='Get Deal'][1]"
+Btn_GetDeal_FirstCP = "css:div#udemy-best-coupons .btn.get-btn.get-deal.go.order-sm-3"
 Btn_ContinueToStore_Popup = "css:.go-to"
+Title_FirstDeal_Store = "xpath://div[@class='coupon'][2]//h3/span"

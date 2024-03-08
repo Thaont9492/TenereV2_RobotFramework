@@ -39,11 +39,11 @@ Test case 04: Test Filter
     Check Jumpto Today's Top, page will scroll to "box box-today-top" class
 
 Test case 05: Test click Get Code and not open affiliate in second time, all coupons visible
-    Get info of title box coupon
+    Get info of title box coupon     ${Title_FirstCP_Store}
     # click getcode button
     Click Button    ${Btn_GetCode_FirstCP}
     Switch Window    NEW
-    Assert title and link
+    Assert title and link    ${Storename_Popup_CP}
     Click Button    ${Btn_Copy_Popup}
     Action Copy code    ${Btn_Copy_Popup}
     # click close popup
@@ -52,17 +52,17 @@ Test case 05: Test click Get Code and not open affiliate in second time, all cou
     # click copy
     Click Element    ${First_CopyBtn_Store}
     Action Copy code    ${First_CopyBtn_Store}
-    Get info of title box coupon
+    Get info of title box coupon    ${Title_FirstCP_Store}
     Click Element          ${Title_FirstCP_Store}
-    Assert title and link
+    Assert title and link    ${Storename_Popup_CP}
     Click Element    ${Btn_Copy_Popup}
     Action Copy code    ${Btn_Copy_Popup}
 
 Test case 06: Test click Get Deal
-    Get info of title box coupon
+    Get info of title box coupon    ${Title_FirstDeal_Store}
     Click Button    ${Btn_GetDeal_FirstCP}
     Switch Window    NEW
-    Assert title and link
+    Assert title and link    ${Storename_Popup_Deal}
     Check info of Popup Get Deal
     # click close popup
     Click Element   ${Close_Popup}
@@ -70,8 +70,8 @@ Test case 06: Test click Get Deal
     # click copy
     Click Element    ${First_CopyBtn_Store}
     Action Copy code    ${First_CopyBtn_Store}
-    Get info of title box coupon
+    Get info of title box coupon    ${Title_FirstCP_Store}
     Click Element          ${Title_FirstCP_Store}
-    Assert title and link
+    Assert title and link    ${Storename_Popup_CP}
     Click Element    ${Btn_Copy_Popup}
     Action Copy code    ${Btn_Copy_Popup}

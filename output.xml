@@ -1,152 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20240306 15:10:56.400" rpa="false" schemaversion="4">
-<suite id="s1" name="TenereV2 RobotFramework" source="D:\Script Python Test\TenereV2_RobotFramework">
-<suite id="s1-s1" name="Tests" source="D:\Script Python Test\TenereV2_RobotFramework\tests">
-<suite id="s1-s1-s1" name="test Store detail" source="D:\Script Python Test\TenereV2_RobotFramework\tests\test_Store_detail.robot">
-<test id="s1-s1-s1-t1" name="Test case 01: Check Title, Meta Desc and Canonical" line="17">
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20240308 14:38:22.713" rpa="false" schemaversion="4">
+<suite id="s1" name="test Review page &amp; test Store detail">
+<suite id="s1-s1" name="test Review page" source="D:\Script Python Test\TenereV2_RobotFramework\tests\test_Review_page.robot">
+<test id="s1-s1-t1" name="Test case 01: Check Title, Meta Desc and Canonical" line="19">
 <kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
 <arg>${url}</arg>
 <arg>headless chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20240306 15:10:56.732" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
-<status status="PASS" starttime="20240306 15:10:56.731" endtime="20240306 15:11:00.705"/>
+<msg timestamp="20240308 14:38:22.998" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com'.</msg>
+<status status="PASS" starttime="20240308 14:38:22.998" endtime="20240308 14:38:26.969"/>
 </kw>
-<kw name="Check Title and Meta Desc and Canonical" library="Storedetail_page">
-<kw name="Get Date Time" library="Base">
-<kw name="Get Current Date" library="DateTime">
-<var>${date}</var>
-<arg>result_format=datetime</arg>
-<doc>Returns current local or UTC time with an optional increment.</doc>
-<msg timestamp="20240306 15:11:00.708" level="INFO">${date} = 2024-03-06 15:11:00.708435</msg>
-<status status="PASS" starttime="20240306 15:11:00.707" endtime="20240306 15:11:00.708"/>
-</kw>
-<kw name="Convert Date" library="DateTime">
-<var>${month}</var>
-<arg>${date}</arg>
-<arg>result_format=%B</arg>
-<doc>Converts between supported `date formats`.</doc>
-<msg timestamp="20240306 15:11:00.708" level="INFO">${month} = March</msg>
-<status status="PASS" starttime="20240306 15:11:00.708" endtime="20240306 15:11:00.708"/>
-</kw>
-<kw name="Convert Date" library="DateTime">
-<var>${year}</var>
-<arg>${date}</arg>
-<arg>result_format=%Y</arg>
-<doc>Converts between supported `date formats`.</doc>
-<msg timestamp="20240306 15:11:00.709" level="INFO">${year} = 2024</msg>
-<status status="PASS" starttime="20240306 15:11:00.709" endtime="20240306 15:11:00.709"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${month}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20240306 15:11:00.709" level="INFO">${month} = March</msg>
-<status status="PASS" starttime="20240306 15:11:00.709" endtime="20240306 15:11:00.710"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${year}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20240306 15:11:00.710" level="INFO">${year} = 2024</msg>
-<status status="PASS" starttime="20240306 15:11:00.710" endtime="20240306 15:11:00.710"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:00.707" endtime="20240306 15:11:00.710"/>
-</kw>
-<kw name="Get Title" library="SeleniumLibrary">
-<var>${title}</var>
-<doc>Returns the title of the current page.</doc>
-<msg timestamp="20240306 15:11:00.722" level="INFO">${title} = 100% OFF Udemy Coupon Codes - March 2024 Promo Codes</msg>
-<status status="PASS" starttime="20240306 15:11:00.710" endtime="20240306 15:11:00.722"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${best_discount}</var>
-<arg>${BestDiscount_Stats}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:00.760" level="INFO">${best_discount} = 100%</msg>
-<status status="PASS" starttime="20240306 15:11:00.723" endtime="20240306 15:11:00.760"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${availble_coupon}</var>
-<arg>${CouponAvailable_Stats}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:00.774" level="INFO">${availble_coupon} = 303</msg>
-<status status="PASS" starttime="20240306 15:11:00.760" endtime="20240306 15:11:00.774"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${title}</arg>
-<arg>${best_discount} OFF ${STORE_NAME} Coupon Codes - ${month} ${year} Promo Codes</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:00.774" endtime="20240306 15:11:00.774"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${meta_desc}</var>
-<arg>xpath=//meta[@name="description"]</arg>
-<arg>content</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20240306 15:11:00.793" level="INFO">${meta_desc} = These 303 Available Udemy discount codes last updated TODAY can help you save Upto 100% OFF. Buy cheaper with Udemy coupons &amp; promo codes NOW!</msg>
-<status status="PASS" starttime="20240306 15:11:00.774" endtime="20240306 15:11:00.793"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${meta_desc}</arg>
-<arg>These ${availble_coupon} Available ${STORE_NAME} discount codes last updated TODAY can help you save Upto ${best_discount} OFF. Buy cheaper with ${STORE_NAME} coupons &amp; promo codes NOW!</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:00.793" endtime="20240306 15:11:00.793"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${canonical}</var>
-<arg>xpath=//link[@rel="canonical"]</arg>
-<arg>href</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20240306 15:11:00.809" level="INFO">${canonical} = https://udemy.tenereteam.com/coupons/</msg>
-<status status="PASS" starttime="20240306 15:11:00.793" endtime="20240306 15:11:00.809"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${canonical}</arg>
-<arg>https://${STORE_NAME_ALIAS}.${LINK}/coupons/</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:00.809" endtime="20240306 15:11:00.809"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:00.706" endtime="20240306 15:11:00.809"/>
-</kw>
-<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20240306 15:11:00.809" endtime="20240306 15:11:07.093"/>
-</kw>
-<status status="PASS" starttime="20240306 15:10:56.731" endtime="20240306 15:11:07.093"/>
-</test>
-<test id="s1-s1-s1-t2" name="Test case 02: Check link of Sidebar and Related Store - Popular Store, Competitor Store is visible" line="20">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>headless chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20240306 15:11:07.094" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
-<status status="PASS" starttime="20240306 15:11:07.094" endtime="20240306 15:11:11.078"/>
-</kw>
-<kw name="Check button Shop now" library="Storedetail_page">
-<kw name="Check Link Go" library="Base">
-<arg>${ShopNowBtn_Store}</arg>
-<arg>nofollow</arg>
+<kw name="Check Title and Meta Desc and Canonical" library="Review_page">
 <kw name="Connect to Store API" library="Storedetail_API">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>storeAPI</arg>
 <arg>${base_url}</arg>
 <arg>verify=true</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20240306 15:11:11.080" level="INFO">Creating Session using : alias=storeAPI, url=https://couponmay.com/api/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
-<status status="PASS" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.080"/>
+<msg timestamp="20240308 14:38:26.971" level="INFO">Creating Session using : alias=storeAPI, url=https://api-test.couponego.com/api/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20240308 14:38:26.971" endtime="20240308 14:38:26.971"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${HEADERS}</var>
 <arg>content-type=${CONTENT_TYPE}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240306 15:11:11.081" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
-<status status="PASS" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.081"/>
+<msg timestamp="20240308 14:38:26.972" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
+<status status="PASS" starttime="20240308 14:38:26.971" endtime="20240308 14:38:26.972"/>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <arg>${HEADERS}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<msg timestamp="20240306 15:11:11.082" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
-<status status="PASS" starttime="20240306 15:11:11.081" endtime="20240306 15:11:11.082"/>
+<msg timestamp="20240308 14:38:26.972" level="INFO">${HEADERS} = {'content-type': 'application/json'}</msg>
+<status status="PASS" starttime="20240308 14:38:26.972" endtime="20240308 14:38:26.972"/>
 </kw>
-<status status="PASS" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.082"/>
+<status status="PASS" starttime="20240308 14:38:26.970" endtime="20240308 14:38:26.972"/>
 </kw>
 <kw name="Request Store info" library="Storedetail_API">
 <kw name="GET On Session" library="RequestsLibrary">
@@ -154,682 +41,184 @@
 <arg>storeAPI</arg>
 <arg>store/${STORE_NAME_ALIAS}</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20240306 15:11:11.297" level="INFO">GET Request : url=https://couponmay.com/api/store/udemy 
+<msg timestamp="20240308 14:38:27.207" level="INFO">GET Request : url=https://api-test.couponego.com/api/store/udemy 
  path_url=/api/store/udemy 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20240306 15:11:11.297" level="INFO">GET Response : url=https://couponmay.com/api/store/udemy 
- status=401, reason=Unauthorized 
- headers={'Date': 'Wed, 06 Mar 2024 08:11:11 GMT', 'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'WWW-Authenticate': 'Basic realm="Restricted Access"', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=u3D9oJ0X6ekCQhvauLcH7UH80C%2Br5yYb%2B6h0iUuy6C6CO8WdZxz%2Fz%2Fnrk1mznSLe5EKSxNXuu5B%2BFZg6nsxG5a9aeHyWW%2Bf8g6YbG8baeeWdR275QKLhHomoU557l0u2"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '8600dfa51b0c079a-HKG', 'alt-svc': 'h3=":443"; ma=86400'} 
- body=&lt;html&gt;
-&lt;head&gt;&lt;title&gt;401 Authorization Required&lt;/title&gt;&lt;/head&gt;
-&lt;body&gt;
-&lt;center&gt;&lt;h1&gt;401 Authorization Required&lt;/h1&gt;&lt;/center&gt;
-&lt;hr&gt;&lt;center&gt;nginx/1.18.0 (Ubuntu)&lt;/center&gt;
-&lt;/body&gt;
-&lt;/html&gt;
- 
+<msg timestamp="20240308 14:38:27.207" level="INFO">GET Response : url=https://api-test.couponego.com/api/store/udemy 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 08 Mar 2024 07:38:27 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Host': 'api-test.couponego.com', 'X-Powered-By': 'PHP/8.2.10', 'Cache-Control': 'private, must-revalidate', 'pragma': 'no-cache', 'expires': '-1', 'X-RateLimit-Limit': '1000000', 'X-RateLimit-Remaining': '999857', 'Access-Control-Allow-Origin': '*', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=BLweGA%2F%2B2VZpUTD8o3kPSU1zzfNbF%2FOemI0j0%2BZnWTilUG%2FfIeWNQzfGpJ254dSF2u5X0Cj%2F5rIpXyEMg8%2FtRloc0iay8ElKD6NxQpgUndeyOBnPqdA24pkOGgW%2Bzjfh%2BBEQCdaVeKCz"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '86112a723c59193d-HKG', 'Content-Encoding': 'gzip', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"data":{"id":"1afccd80-265a-11eb-8a6d-7fb536592a43","name":"Udemy","faqs":[{"id":"e768f410-c7a4-11ec-a40e-81efd082eb15","title":"How long can I use the Udemy coupon?","description":"If you have a coupon or promo code from an Udemy offer, you can use it to save money on qualified courses until the deal expires. Specific Udemy offers may last for a different amount of time. Several deals may last a few days, whereas some others may last several weeks. Furthermore, based on the coupon or offer, the maximum quantity of redemptions for Udemy coupons might vary.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"f1f6b200-c7a4-11ec-8454-c115056058a2","title":"How can I receive discounts on Udemy as a student?","description":"You will always receive multiple discounts as a student on thousands of Udemy online courses. You will also have access to the latest updates released monthly by professionals in the industry, ensuring that you will have a chance to master new skills as well as expand your knowledge. Also, remember to take advantage of available Udemy coupons and discount codes to get them for the best price.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"00ab8350-c7a5-11ec-adfe-c5c4d94631e4","title":"Is Udemy certificate worth it?","description":"Although college or institution does not acknowledge Udemy certifications, these certificates serve as excellent add-ons to your CV portfolio as more organizations recognize the value of upskilling. Moreover, a lot of people have begun developing skills regardless of certification, as well as there are a variety of courses accessible to them. The courses might assist students in gaining a thorough understanding of their chosen course and as a result, it is completely worthwhile.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"0dac5e70-c7a5-11ec-bfdd-71cbc16e132f","title":"What is the credits program of Udemy?","description":"You can be eligible for the Udemy credits program if you have an Udemy account. Credits are awarded for performing particular tasks, such as enrolling in specified courses. Credits will be applied instantly to the course, as well as to a number of other Udemy services.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"18d36780-c7a5-11ec-adb0-11435f0e8459","title":"What is the refund policy of Udemy?","description":"For the vast majority of course purchases, Udemy offers a 30-day refund or credit. You can ask for a refund during 30 days of purchasing in case you are displeased with the course. If you are not eligible for a refund, Udemy will reward your account with some credits instead.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"0f62f040-27ec-11eb-991a-e51593957da7","title":"Do all courses have the same discount rate within the platform?","description":"Well, different courses have different levels of technicality and demands for their accomplishment. Some courses involve the physical involvement of the tutors; hence, their discount might be squeezed, however, at the moment, more than have the courses offered at Udemy have the craziest deals that are specifically meant for you.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"e9de6460-27eb-11eb-822a-49e23825cb31","title":"How can I get a discount when I make payment for Udemy online courses?","description":"This platform has availed for you the craziest offer that you can ever imagine of. This is only available when you make purchases via our platform, and it has been verified by the Udemy personnel. Get a chance to learn your top skill at a discount of up to 15% of the stipulated fee.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"213f1a10-27ec-11eb-83d6-5552f9541b40","title":"What other advantages do I get to have when I register for an Udemy course via this platform?","description":"Within this festive season and the November black Friday spree, you should be sure of many free gifts from the Udemy platform. You are sure of getting up to 60% off discount within the November coupon. Make the right choice now.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"bd8ac890-7c60-11ed-afac-d70784ec24d6","title":"How to apply Udemy coupon code?","description":"&lt;p&gt;&lt;strong&gt;To use a Udemy coupon code, you can follow these detailed steps:&lt;\/strong&gt;&lt;\/p&gt;\n\n&lt;ol&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;Visit the Udemy website and browse the courses that are available. You can search for courses by keyword, category, or instructor to find the courses that interest you.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;Once you&amp;#39;ve found a course that you want to take, click on the &amp;quot;Add to Cart&amp;quot; button to add it to your cart. You can continue browsing and adding courses to your cart if you want to take multiple courses.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;When you&amp;#39;re ready to checkout, click on the &amp;quot;View Cart&amp;quot; button at the top of the page. This will take you to the checkout page, where you can review the courses in your cart and proceed to checkout.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;On the checkout page, you&amp;#39;ll see a field labeled &amp;quot;Coupon Code&amp;quot; below the list of courses in your cart. This is where you can enter your Udemy coupon code.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;To enter your coupon code, simply type it into the &amp;quot;Coupon Code&amp;quot; field and click on the &amp;quot;Apply&amp;quot; button. The coupon code will be applied to your purchase, and the discount will be reflected in the updated total on the checkout page.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;Once your coupon code has been applied, you can review your purchase and make sure that everything is correct. If you&amp;#39;re happy with your order, you can proceed to the next step.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;To complete the checkout process, you&amp;#39;ll need to enter your payment information. Udemy accepts various payment methods, including credit and debit cards, PayPal, and other online payment services.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;After you&amp;#39;ve entered your payment information and completed the checkout process, your purchase will be complete and you&amp;#39;ll be able to access your courses on the Udemy website or through the Udemy app.&lt;\/p&gt;\n\t&lt;\/li&gt;\n&lt;\/ol&gt;\n\n&lt;p&gt;Overall, using a Udemy coupon code is a simple process that can help you save money on your course purchases. Just follow the steps above to apply your coupon code at checkout and enjoy your discount.&lt;\/p&gt;\n","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"}],"coupons_count":303,"categories":[{"id":"1728df00-e365-11ec-9521-3dab7d120dd3","name":"Education","alias":"education","status":"published","parent_id":"7ac4ba00-e363-11ec-b5bc-4b9adf61b943"},{"id":"a4aeb520-e587-11ec-88af-2351af7e24ec","name":"Education &amp; Training","alias":"education-and-training","status":"published","parent_id":null}],"alias":"udemy","logo":"https:\/\/tenereteam.s3-us-west-1.amazonaws.com\/udemy.webp?v=1709865231","option":1,"about":"&lt;b&gt;Udemy&lt;\/b&gt; is a major brand that offers a wide variety of items. Whether you're looking for one of items like Education, Education &amp; Training, &lt;b&gt;Udemy&lt;\/b&gt; has it all. You can also find a lot of similar items at stores that compete with &lt;b&gt;Udemy&lt;\/b&gt; eg &lt;a target=\"_blank\" rel=\"nofollow\" class=\"font-semibold\" href=\"https:\/\/princeton-review.tenereteam.com\/coupons\/\"&gt;Princeton Review&lt;\/a&gt;, &lt;a target=\"_blank\" rel=\"nofollow\" class=\"font-semibold\" href=\"https:\/\/aromahead.tenereteam.com\/coupons\/\"&gt;Aromahead&lt;\/a&gt;, &lt;a target=\"_blank\" rel=\"nofollow\" class=\"font-semibold\" href=\"https:\/\/acumobility.tenereteam.com\/coupons\/\"&gt;Acumobility&lt;\/a&gt;,..&lt;p&gt;&lt;\/p&gt;When shopping at &lt;b&gt;Udemy&lt;\/b&gt;, you can save a significant amount of money by using promo codes. These discount codes are offered continuously by &lt;b&gt;Udemy.com&lt;\/b&gt;, usually weekly or during special events. You can search for attractive coupon codes at &lt;b&gt;TenereTeam&lt;\/b&gt; and enjoy your wonderful shopping time.","aboutOurStore":"With our site loaded with coupons, our customers saved an average of &lt;b&gt;$55&lt;\/b&gt;. You can still save just as much if you avail of our deals today! We still have &lt;b&gt;303&lt;\/b&gt; coupons so don't worry, there's enough for everyone. We know that you're super excited to start saving, but we have to remind you to check out the mechanics and limitations of each coupon. It's the best thing to do for a smooth transaction! &lt;p&gt;&lt;\/p&gt; Don't slow down now. Take those offers for &lt;b&gt;Udemy&lt;\/b&gt; from &lt;b&gt;TenereTeam&lt;\/b&gt; and race to checkout right now!","guides":{"title":"Udemy Store Guides","description":"This Udemy store will have the latest Udemy promo codes coupons that you don't want to miss. To access the most up-to-date coupons, click on the \"Latest code\" button, and a list of discount codes will be shown. There are also a huge number of other coupons available underneath such as Udemy Thanksgiving offers, Black Friday sale, and udemy coupon 9.99, including some that provide significant discounts of up to 100%. Following that, there are a few money-saving advice, FAQs, and a few expired promo codes that can be used anymore."},"latest_news":{"title":"Latest Updates On Udemy","description":"&lt;strong&gt;Updates On Restricted Topics List&lt;\/strong&gt;\n\n&lt;p&gt;According to customer comments, Udemy has revised its Restricted Topics List to cover a few material categories that have frequently caused negative or toxic experiences for learners. Courses on dating and sexual performance, as well as courses promoting unproven fringe theories, are among them. Udemy has also clarified several of its previous content policies like their course policy for younger students. Since Udemy is designed for mature learners and their Terms of Service require instructors as well as learners to be at least 18 years old to join up, they will not allow content that is overtly aimed at young students. Courses that assist parents in teaching or learning alongside younger students, on the other hand, are still permissible.&lt;\/p&gt;\n\n&lt;strong&gt;Updates On Privacy Policy&lt;\/strong&gt;\n\n&lt;p&gt;Udemy may adjust the... (set the log level to DEBUG or TRACE to see the full content) 
  </msg>
-<msg timestamp="20240306 15:11:11.297" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: https://couponmay.com/api/store/udemy</msg>
-<status status="FAIL" starttime="20240306 15:11:11.082" endtime="20240306 15:11:11.300"/>
+<msg timestamp="20240308 14:38:27.208" level="INFO">${respone} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240308 14:38:26.972" endtime="20240308 14:38:27.208"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>${respone.text}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+<msg timestamp="20240308 14:38:27.209" level="INFO">{"data":{"id":"1afccd80-265a-11eb-8a6d-7fb536592a43","name":"Udemy","faqs":[{"id":"e768f410-c7a4-11ec-a40e-81efd082eb15","title":"How long can I use the Udemy coupon?","description":"If you have a coupon or promo code from an Udemy offer, you can use it to save money on qualified courses until the deal expires. Specific Udemy offers may last for a different amount of time. Several deals may last a few days, whereas some others may last several weeks. Furthermore, based on the coupon or offer, the maximum quantity of redemptions for Udemy coupons might vary.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"f1f6b200-c7a4-11ec-8454-c115056058a2","title":"How can I receive discounts on Udemy as a student?","description":"You will always receive multiple discounts as a student on thousands of Udemy online courses. You will also have access to the latest updates released monthly by professionals in the industry, ensuring that you will have a chance to master new skills as well as expand your knowledge. Also, remember to take advantage of available Udemy coupons and discount codes to get them for the best price.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"00ab8350-c7a5-11ec-adfe-c5c4d94631e4","title":"Is Udemy certificate worth it?","description":"Although college or institution does not acknowledge Udemy certifications, these certificates serve as excellent add-ons to your CV portfolio as more organizations recognize the value of upskilling. Moreover, a lot of people have begun developing skills regardless of certification, as well as there are a variety of courses accessible to them. The courses might assist students in gaining a thorough understanding of their chosen course and as a result, it is completely worthwhile.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"0dac5e70-c7a5-11ec-bfdd-71cbc16e132f","title":"What is the credits program of Udemy?","description":"You can be eligible for the Udemy credits program if you have an Udemy account. Credits are awarded for performing particular tasks, such as enrolling in specified courses. Credits will be applied instantly to the course, as well as to a number of other Udemy services.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"18d36780-c7a5-11ec-adb0-11435f0e8459","title":"What is the refund policy of Udemy?","description":"For the vast majority of course purchases, Udemy offers a 30-day refund or credit. You can ask for a refund during 30 days of purchasing in case you are displeased with the course. If you are not eligible for a refund, Udemy will reward your account with some credits instead.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"0f62f040-27ec-11eb-991a-e51593957da7","title":"Do all courses have the same discount rate within the platform?","description":"Well, different courses have different levels of technicality and demands for their accomplishment. Some courses involve the physical involvement of the tutors; hence, their discount might be squeezed, however, at the moment, more than have the courses offered at Udemy have the craziest deals that are specifically meant for you.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"e9de6460-27eb-11eb-822a-49e23825cb31","title":"How can I get a discount when I make payment for Udemy online courses?","description":"This platform has availed for you the craziest offer that you can ever imagine of. This is only available when you make purchases via our platform, and it has been verified by the Udemy personnel. Get a chance to learn your top skill at a discount of up to 15% of the stipulated fee.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"213f1a10-27ec-11eb-83d6-5552f9541b40","title":"What other advantages do I get to have when I register for an Udemy course via this platform?","description":"Within this festive season and the November black Friday spree, you should be sure of many free gifts from the Udemy platform. You are sure of getting up to 60% off discount within the November coupon. Make the right choice now.","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"},{"id":"bd8ac890-7c60-11ed-afac-d70784ec24d6","title":"How to apply Udemy coupon code?","description":"&lt;p&gt;&lt;strong&gt;To use a Udemy coupon code, you can follow these detailed steps:&lt;\/strong&gt;&lt;\/p&gt;\n\n&lt;ol&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;Visit the Udemy website and browse the courses that are available. You can search for courses by keyword, category, or instructor to find the courses that interest you.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;Once you&amp;#39;ve found a course that you want to take, click on the &amp;quot;Add to Cart&amp;quot; button to add it to your cart. You can continue browsing and adding courses to your cart if you want to take multiple courses.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;When you&amp;#39;re ready to checkout, click on the &amp;quot;View Cart&amp;quot; button at the top of the page. This will take you to the checkout page, where you can review the courses in your cart and proceed to checkout.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;On the checkout page, you&amp;#39;ll see a field labeled &amp;quot;Coupon Code&amp;quot; below the list of courses in your cart. This is where you can enter your Udemy coupon code.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;To enter your coupon code, simply type it into the &amp;quot;Coupon Code&amp;quot; field and click on the &amp;quot;Apply&amp;quot; button. The coupon code will be applied to your purchase, and the discount will be reflected in the updated total on the checkout page.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;Once your coupon code has been applied, you can review your purchase and make sure that everything is correct. If you&amp;#39;re happy with your order, you can proceed to the next step.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;To complete the checkout process, you&amp;#39;ll need to enter your payment information. Udemy accepts various payment methods, including credit and debit cards, PayPal, and other online payment services.&lt;\/p&gt;\n\t&lt;\/li&gt;\n\t&lt;li&gt;\n\t&lt;p&gt;After you&amp;#39;ve entered your payment information and completed the checkout process, your purchase will be complete and you&amp;#39;ll be able to access your courses on the Udemy website or through the Udemy app.&lt;\/p&gt;\n\t&lt;\/li&gt;\n&lt;\/ol&gt;\n\n&lt;p&gt;Overall, using a Udemy coupon code is a simple process that can help you save money on your course purchases. Just follow the steps above to apply your coupon code at checkout and enjoy your discount.&lt;\/p&gt;\n","store_id":"1afccd80-265a-11eb-8a6d-7fb536592a43"}],"coupons_count":303,"categories":[{"id":"1728df00-e365-11ec-9521-3dab7d120dd3","name":"Education","alias":"education","status":"published","parent_id":"7ac4ba00-e363-11ec-b5bc-4b9adf61b943"},{"id":"a4aeb520-e587-11ec-88af-2351af7e24ec","name":"Education &amp; Training","alias":"education-and-training","status":"published","parent_id":null}],"alias":"udemy","logo":"https:\/\/tenereteam.s3-us-west-1.amazonaws.com\/udemy.webp?v=1709865231","option":1,"about":"&lt;b&gt;Udemy&lt;\/b&gt; is a major brand that offers a wide variety of items. Whether you're looking for one of items like Education, Education &amp; Training, &lt;b&gt;Udemy&lt;\/b&gt; has it all. You can also find a lot of similar items at stores that compete with &lt;b&gt;Udemy&lt;\/b&gt; eg &lt;a target=\"_blank\" rel=\"nofollow\" class=\"font-semibold\" href=\"https:\/\/princeton-review.tenereteam.com\/coupons\/\"&gt;Princeton Review&lt;\/a&gt;, &lt;a target=\"_blank\" rel=\"nofollow\" class=\"font-semibold\" href=\"https:\/\/aromahead.tenereteam.com\/coupons\/\"&gt;Aromahead&lt;\/a&gt;, &lt;a target=\"_blank\" rel=\"nofollow\" class=\"font-semibold\" href=\"https:\/\/acumobility.tenereteam.com\/coupons\/\"&gt;Acumobility&lt;\/a&gt;,..&lt;p&gt;&lt;\/p&gt;When shopping at &lt;b&gt;Udemy&lt;\/b&gt;, you can save a significant amount of money by using promo codes. These discount codes are offered continuously by &lt;b&gt;Udemy.com&lt;\/b&gt;, usually weekly or during special events. You can search for attractive coupon codes at &lt;b&gt;TenereTeam&lt;\/b&gt; and enjoy your wonderful shopping time.","aboutOurStore":"With our site loaded with coupons, our customers saved an average of &lt;b&gt;$55&lt;\/b&gt;. You can still save just as much if you avail of our deals today! We still have &lt;b&gt;303&lt;\/b&gt; coupons so don't worry, there's enough for everyone. We know that you're super excited to start saving, but we have to remind you to check out the mechanics and limitations of each coupon. It's the best thing to do for a smooth transaction! &lt;p&gt;&lt;\/p&gt; Don't slow down now. Take those offers for &lt;b&gt;Udemy&lt;\/b&gt; from &lt;b&gt;TenereTeam&lt;\/b&gt; and race to checkout right now!","guides":{"title":"Udemy Store Guides","description":"This Udemy store will have the latest Udemy promo codes coupons that you don't want to miss. To access the most up-to-date coupons, click on the \"Latest code\" button, and a list of discount codes will be shown. There are also a huge number of other coupons available underneath such as Udemy Thanksgiving offers, Black Friday sale, and udemy coupon 9.99, including some that provide significant discounts of up to 100%. Following that, there are a few money-saving advice, FAQs, and a few expired promo codes that can be used anymore."},"latest_news":{"title":"Latest Updates On Udemy","description":"&lt;strong&gt;Updates On Restricted Topics List&lt;\/strong&gt;\n\n&lt;p&gt;According to customer comments, Udemy has revised its Restricted Topics List to cover a few material categories that have frequently caused negative or toxic experiences for learners. Courses on dating and sexual performance, as well as courses promoting unproven fringe theories, are among them. Udemy has also clarified several of its previous content policies like their course policy for younger students. Since Udemy is designed for mature learners and their Terms of Service require instructors as well as learners to be at least 18 years old to join up, they will not allow content that is overtly aimed at young students. Courses that assist parents in teaching or learning alongside younger students, on the other hand, are still permissible.&lt;\/p&gt;\n\n&lt;strong&gt;Updates On Privacy Policy&lt;\/strong&gt;\n\n&lt;p&gt;Udemy may adjust their Privacy Policy from time to time, and if they make some major changes, they will inform users by an email or a notification published on their website. &amp;nbsp;Udemy will also provide a synopsis of the major updates, and unless otherwise specified, updates will take effect on the same day that they are published.&lt;\/p&gt;"},"cashBackCurrency":null,"cashBackConfig":null,"go":"w8B9Z2","rated_user_count":"1883","parentStore":null,"socials":[{"name":"official facebook page","url":"https:\/\/www.facebook.com\/udemy\/"},{"name":"official twitter","url":"https:\/\/twitter.com\/udemy"},{"name":"official instagram","url":"https:\/\/www.instagram.com\/udemy\/"},{"name":"official linkedin","url":"https:\/\/www.linkedin.com\/company\/udemy\/"},{"name":"official pinterest","url":"https:\/\/www.pinterest.com\/udemy"},{"name":"official youtube channel","url":"https:\/\/www.youtube.com\/c\/udemy"},{"name":"wikipedia","url":"https:\/\/en.wikipedia.org\/wiki\/Udemy"}],"keywordStore":[{"name":"Udemy Discount 50% OFF","alias":"udemy-discount-50-off","logo":"https:\/\/tenereteam.s3-us-west-1.amazonaws.com\/udemy.webp?v=1709865231","coupon_count":29}],"similar_store":{"princeton-review":"Princeton Review","aromahead":"Aromahead","acumobility":"Acumobility","expertrating":"ExpertRating","theotrade":"TheoTrade"},"short_store_url":"Udemy.com","rated_star":"3.8","h1_title":"Udemy Coupons &amp; Promo Codes with 100% off (303 Working Codes) March 2024","cash_back_term":"","parent_store_id":null,"store_url":"https:\/\/www.udemy.com","affiliate_url":"https:\/\/go.skimresources.com?id=141977X1670779&amp;xs=1&amp;url=https%3A%2F%2Fwww.udemy.com%2F","total_donated":null,"meta_title":"","meta_desc":"","about_coupon_cta":"Are you looking for ways to save money when shopping at &lt;b&gt;&lt;b&gt;Udemy&lt;\/b&gt;&lt;\/b&gt;. Our &lt;b&gt;&lt;b&gt;Udemy&lt;\/b&gt; coupon codes&lt;\/b&gt; can help you do just that! Over &lt;b&gt;[total_user]&lt;\/b&gt; customers have already used our coupons to save an average of &lt;b&gt;&lt;b&gt;$55&lt;\/b&gt;&lt;\/b&gt; with &lt;b&gt;&lt;b&gt;Udemy&lt;\/b&gt; discount codes&lt;\/b&gt;. There are currently &lt;b&gt;&lt;b&gt;303&lt;\/b&gt;&lt;\/b&gt; coupons available, so now is the perfect time to join in on the savings.","pros_and_cons":"Are you looking for ways to save money when shopping at &lt;b&gt;&lt;b&gt;Udemy&lt;\/b&gt;&lt;\/b&gt;. Our &lt;b&gt;&lt;b&gt;Udemy&lt;\/b&gt; coupon codes&lt;\/b&gt; can help you do just that! Over &lt;b&gt;[total_user]&lt;\/b&gt; customers have already used our coupons to save an average of &lt;b&gt;&lt;b&gt;$55&lt;\/b&gt;&lt;\/b&gt; with &lt;b&gt;&lt;b&gt;Udemy&lt;\/b&gt; discount codes&lt;\/b&gt;. There are currently &lt;b&gt;&lt;b&gt;303&lt;\/b&gt;&lt;\/b&gt; coupons available, so now is the perfect time to join in on the savings.&lt;\/br&gt;&lt;p&gt;&lt;b&gt;Udemy&lt;\/b&gt; is an online learning platform that offers courses on a wide range of topics, from coding and design to business and personal development. With &lt;b&gt;over 155,000 courses&lt;\/b&gt; taught by&lt;b&gt; expert instructors&lt;\/b&gt;, Udemy provides &lt;b&gt;flexible and affordable&lt;\/b&gt; access to education. Whether you're looking to acquire new skills, advance your career, or simply learn something new, Udemy is a convenient and reliable source of knowledge.&lt;\/p&gt;"},"status":200}</msg>
+<status status="PASS" starttime="20240308 14:38:27.208" endtime="20240308 14:38:27.209"/>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <arg>${respone}</arg>
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+<msg timestamp="20240308 14:38:27.209" level="INFO">${respone} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240308 14:38:27.209" endtime="20240308 14:38:27.209"/>
 </kw>
-<status status="FAIL" starttime="20240306 15:11:11.082" endtime="20240306 15:11:11.300"/>
+<status status="PASS" starttime="20240308 14:38:26.972" endtime="20240308 14:38:27.209"/>
 </kw>
 <kw name="Get Info of store" library="Storedetail_API">
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${short_url}</var>
+<arg>${respone.json()}[data]</arg>
+<arg>short_store_url</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20240308 14:38:27.226" level="INFO">${short_url} = ['Udemy.com']</msg>
+<status status="PASS" starttime="20240308 14:38:27.210" endtime="20240308 14:38:27.226"/>
 </kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${short_url}</var>
+<arg>${short_url}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20240308 14:38:27.226" level="INFO">${short_url} = ["Udemy.com"]</msg>
+<status status="PASS" starttime="20240308 14:38:27.226" endtime="20240308 14:38:27.226"/>
+</kw>
+<kw name="Remove String" library="String">
+<var>${short_url}</var>
+<arg>${short_url}</arg>
+<arg>["</arg>
+<arg>"]</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<msg timestamp="20240308 14:38:27.226" level="INFO">${short_url} = Udemy.com</msg>
+<status status="PASS" starttime="20240308 14:38:27.226" endtime="20240308 14:38:27.226"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${short_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240308 14:38:27.227" level="INFO">${short_url} = Udemy.com</msg>
+<status status="PASS" starttime="20240308 14:38:27.226" endtime="20240308 14:38:27.227"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${count_coupon}</var>
+<arg>${respone.json()}[data]</arg>
+<arg>coupons_count</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20240308 14:38:27.239" level="INFO">${count_coupon} = [303]</msg>
+<status status="PASS" starttime="20240308 14:38:27.227" endtime="20240308 14:38:27.239"/>
+</kw>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${count_coupon}</var>
+<arg>${count_coupon}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20240308 14:38:27.240" level="INFO">${count_coupon} = [303]</msg>
+<status status="PASS" starttime="20240308 14:38:27.239" endtime="20240308 14:38:27.240"/>
+</kw>
+<kw name="Remove String" library="String">
+<var>${count_coupon}</var>
+<arg>${count_coupon}</arg>
+<arg>[</arg>
+<arg>]</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<msg timestamp="20240308 14:38:27.240" level="INFO">${count_coupon} = 303</msg>
+<status status="PASS" starttime="20240308 14:38:27.240" endtime="20240308 14:38:27.240"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${count_coupon}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240308 14:38:27.240" level="INFO">${count_coupon} = 303</msg>
+<status status="PASS" starttime="20240308 14:38:27.240" endtime="20240308 14:38:27.240"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
 <var>${link_go}</var>
-<arg>${location}</arg>
-<arg>href</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+<arg>${respone.json()}[data][go]</arg>
+<arg>foreign_key_right</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20240308 14:38:27.253" level="INFO">${link_go} = []</msg>
+<status status="PASS" starttime="20240308 14:38:27.240" endtime="20240308 14:38:27.253"/>
 </kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${rel_go}</var>
-<arg>${location}</arg>
-<arg>rel</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${target_go}</var>
-<arg>${location}</arg>
-<arg>target</arg>
-<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${type}</arg>
-<arg>${rel_go}</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${target_go}</arg>
-<arg>_blank</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${link_go}</var>
 <arg>${link_go}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20240308 14:38:27.253" level="INFO">${link_go} = []</msg>
+<status status="PASS" starttime="20240308 14:38:27.253" endtime="20240308 14:38:27.253"/>
+</kw>
+<kw name="Remove String" library="String">
+<var>${link_go}</var>
 <arg>${link_go}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
+<arg>[</arg>
+<arg>]</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<msg timestamp="20240308 14:38:27.253" level="INFO">${link_go} = </msg>
+<status status="PASS" starttime="20240308 14:38:27.253" endtime="20240308 14:38:27.253"/>
 </kw>
-<status status="FAIL" starttime="20240306 15:11:11.080" endtime="20240306 15:11:11.300"/>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${link_go}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20240308 14:38:27.253" level="INFO">${link_go} = </msg>
+<status status="PASS" starttime="20240308 14:38:27.253" endtime="20240308 14:38:27.253"/>
 </kw>
-<status status="FAIL" starttime="20240306 15:11:11.079" endtime="20240306 15:11:11.300"/>
+<status status="PASS" starttime="20240308 14:38:27.209" endtime="20240308 14:38:27.253"/>
 </kw>
-<kw name="Check info Store Review" library="Base">
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Check info Homepage" library="Base">
-<arg>${HomeSidebar_Store}</arg>
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Recommended Stores visible and has more than 5 items" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Best Stores visible and has more than 5 items" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Competitor box visible and has more than 5 items" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:11.300" endtime="20240306 15:11:11.300"/>
-</kw>
-<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20240306 15:11:11.300" endtime="20240306 15:11:17.537"/>
-</kw>
-<status status="FAIL" starttime="20240306 15:11:07.094" endtime="20240306 15:11:17.537">HTTPError: 401 Client Error: Unauthorized for url: https://couponmay.com/api/store/udemy</status>
-</test>
-<test id="s1-s1-s1-t3" name="Test case 03: Test info of header and content about" line="28">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>headless chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20240306 15:11:17.537" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
-<status status="PASS" starttime="20240306 15:11:17.537" endtime="20240306 15:11:21.487"/>
-</kw>
-<kw name="H1 title visible and has info of coupon stats" library="Storedetail_page">
 <kw name="Get Date Time" library="Base">
 <kw name="Get Current Date" library="DateTime">
 <var>${date}</var>
 <arg>result_format=datetime</arg>
 <doc>Returns current local or UTC time with an optional increment.</doc>
-<msg timestamp="20240306 15:11:21.489" level="INFO">${date} = 2024-03-06 15:11:21.488659</msg>
-<status status="PASS" starttime="20240306 15:11:21.488" endtime="20240306 15:11:21.489"/>
+<msg timestamp="20240308 14:38:27.254" level="INFO">${date} = 2024-03-08 14:38:27.254199</msg>
+<status status="PASS" starttime="20240308 14:38:27.254" endtime="20240308 14:38:27.254"/>
 </kw>
 <kw name="Convert Date" library="DateTime">
 <var>${month}</var>
 <arg>${date}</arg>
 <arg>result_format=%B</arg>
 <doc>Converts between supported `date formats`.</doc>
-<msg timestamp="20240306 15:11:21.489" level="INFO">${month} = March</msg>
-<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
+<msg timestamp="20240308 14:38:27.254" level="INFO">${month} = March</msg>
+<status status="PASS" starttime="20240308 14:38:27.254" endtime="20240308 14:38:27.254"/>
 </kw>
 <kw name="Convert Date" library="DateTime">
 <var>${year}</var>
 <arg>${date}</arg>
 <arg>result_format=%Y</arg>
 <doc>Converts between supported `date formats`.</doc>
-<msg timestamp="20240306 15:11:21.489" level="INFO">${year} = 2024</msg>
-<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
+<msg timestamp="20240308 14:38:27.254" level="INFO">${year} = 2024</msg>
+<status status="PASS" starttime="20240308 14:38:27.254" endtime="20240308 14:38:27.254"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${month}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20240306 15:11:21.489" level="INFO">${month} = March</msg>
-<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
+<msg timestamp="20240308 14:38:27.254" level="INFO">${month} = March</msg>
+<status status="PASS" starttime="20240308 14:38:27.254" endtime="20240308 14:38:27.254"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${year}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20240306 15:11:21.489" level="INFO">${year} = 2024</msg>
-<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.489"/>
+<msg timestamp="20240308 14:38:27.254" level="INFO">${year} = 2024</msg>
+<status status="PASS" starttime="20240308 14:38:27.254" endtime="20240308 14:38:27.255"/>
 </kw>
-<status status="PASS" starttime="20240306 15:11:21.488" endtime="20240306 15:11:21.489"/>
+<status status="PASS" starttime="20240308 14:38:27.253" endtime="20240308 14:38:27.255"/>
 </kw>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>${Title_H1_Store}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20240306 15:11:21.508" level="INFO">Element 'css:.store-title' is displayed.</msg>
-<status status="PASS" starttime="20240306 15:11:21.489" endtime="20240306 15:11:21.508"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${title_h1}</var>
-<arg>${Title_H1_Store}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:21.520" level="INFO">${title_h1} = Udemy Coupons &amp; Promo Codes with 100% off (303 Working Codes) March 2024</msg>
-<status status="PASS" starttime="20240306 15:11:21.508" endtime="20240306 15:11:21.520"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${best_discount}</var>
-<arg>${BestDiscount_Stats}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:21.529" level="INFO">${best_discount} = 100%</msg>
-<status status="PASS" starttime="20240306 15:11:21.521" endtime="20240306 15:11:21.529"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${availble_cp}</var>
-<arg>${CouponAvailable_Stats}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:21.544" level="INFO">${availble_cp} = 303</msg>
-<status status="PASS" starttime="20240306 15:11:21.529" endtime="20240306 15:11:21.544"/>
+<kw name="Get Title" library="SeleniumLibrary">
+<var>${title}</var>
+<doc>Returns the title of the current page.</doc>
+<msg timestamp="20240308 14:38:27.259" level="INFO">${title} = Udemy Reviews - Read Customer Reviews of Udemy.com</msg>
+<status status="PASS" starttime="20240308 14:38:27.255" endtime="20240308 14:38:27.259"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${title_h1}</arg>
-<arg>${STORE_NAME} Coupons &amp; Promo Codes with ${best_discount} off (${availble_cp} Working Codes) ${month} ${year}</arg>
+<arg>${title}</arg>
+<arg>${STORE_NAME} Reviews - Read Customer Reviews of ${short_url}</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:21.545" endtime="20240306 15:11:21.545"/>
+<status status="PASS" starttime="20240308 14:38:27.259" endtime="20240308 14:38:27.259"/>
 </kw>
-<status status="PASS" starttime="20240306 15:11:21.488" endtime="20240306 15:11:21.545"/>
-</kw>
-<kw name="Check link of &quot;Add rating&quot; button" library="Storedetail_page">
 <kw name="Get Element Attribute" library="SeleniumLibrary">
-<var>${link_add_rating_btn}</var>
-<arg>${AddRating_Store}</arg>
-<arg>href</arg>
+<var>${meta_desc}</var>
+<arg>xpath=//meta[@name="description"]</arg>
+<arg>content</arg>
 <doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
-<msg timestamp="20240306 15:11:21.561" level="INFO">${link_add_rating_btn} = https://udemy.tenereteam.com/</msg>
-<status status="PASS" starttime="20240306 15:11:21.545" endtime="20240306 15:11:21.561"/>
+<msg timestamp="20240308 14:38:27.277" level="INFO">${meta_desc} = Save big with Udemy in March 2024, via 303 verified and active coupons available. Exclusive savings only at TenereTeam.</msg>
+<status status="PASS" starttime="20240308 14:38:27.259" endtime="20240308 14:38:27.277"/>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${link_add_rating_btn}</arg>
-<arg>${REVIEW_URL}/</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:21.561" endtime="20240306 15:11:21.561"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:21.545" endtime="20240306 15:11:21.561"/>
-</kw>
-<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20240306 15:11:21.561" endtime="20240306 15:11:27.766"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:17.537" endtime="20240306 15:11:27.766"/>
-</test>
-<test id="s1-s1-s1-t4" name="Test case 04: Test Filter" line="32">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>headless chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20240306 15:11:27.773" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
-<status status="PASS" starttime="20240306 15:11:27.772" endtime="20240306 15:11:31.721"/>
-</kw>
-<kw name="Check filter coupon, all &quot;Get Deal&quot; is invisible" library="Storedetail_page">
-<kw name="Click Filter" library="Base">
-<arg>${Filter_Coupon_Store}</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Filter_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:31.724" level="INFO">Clicking element 'css:div#js-filter'.</msg>
-<status status="PASS" starttime="20240306 15:11:31.723" endtime="20240306 15:11:31.781"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${filter_item}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:31.781" level="INFO">Clicking element 'css:.cover-filter &gt; li:nth-of-type(2)'.</msg>
-<status status="PASS" starttime="20240306 15:11:31.781" endtime="20240306 15:11:31.823"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:31.723" endtime="20240306 15:11:31.823"/>
-</kw>
-<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
-<arg>xpath://div[@class='coupon']//button[@innertext='Get Deal']</arg>
-<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<msg timestamp="20240306 15:11:31.836" level="INFO">Element 'xpath://div[@class='coupon']//button[@innertext='Get Deal']' did not exist.</msg>
-<status status="PASS" starttime="20240306 15:11:31.823" endtime="20240306 15:11:31.836"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:31.722" endtime="20240306 15:11:31.837"/>
-</kw>
-<kw name="Check filter deal, all &quot;Get Code&quot; is invisible" library="Storedetail_page">
-<kw name="Click Filter" library="Base">
-<arg>${Filter_Deal_Store}</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Filter_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:31.837" level="INFO">Clicking element 'css:div#js-filter'.</msg>
-<status status="PASS" starttime="20240306 15:11:31.837" endtime="20240306 15:11:31.859"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${filter_item}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:31.859" level="INFO">Clicking element 'css:.cover-filter &gt; li:nth-of-type(3)'.</msg>
-<status status="PASS" starttime="20240306 15:11:31.859" endtime="20240306 15:11:31.900"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:31.837" endtime="20240306 15:11:31.900"/>
-</kw>
-<kw name="Element Should Not Be Visible" library="SeleniumLibrary">
-<arg>xpath://div[@class='coupon']//button[@innertext='Get Code']</arg>
-<doc>Verifies that the element identified by ``locator`` is NOT visible.</doc>
-<msg timestamp="20240306 15:11:31.910" level="INFO">Element 'xpath://div[@class='coupon']//button[@innertext='Get Code']' did not exist.</msg>
-<status status="PASS" starttime="20240306 15:11:31.900" endtime="20240306 15:11:31.910"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:31.837" endtime="20240306 15:11:31.910"/>
-</kw>
-<kw name="Check Filter All Offers, all coupons is visible" library="Storedetail_page">
-<kw name="Click Filter" library="Base">
-<arg>${Fitler_All_Store}</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Filter_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:31.911" level="INFO">Clicking element 'css:div#js-filter'.</msg>
-<status status="PASS" starttime="20240306 15:11:31.911" endtime="20240306 15:11:31.935"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${filter_item}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:31.935" level="INFO">Clicking element 'css:.cover-filter &gt; li:nth-of-type(1)'.</msg>
-<status status="PASS" starttime="20240306 15:11:31.935" endtime="20240306 15:11:31.983"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:31.911" endtime="20240306 15:11:31.983"/>
-</kw>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css:.btn.get-btn.get-deal.go.order-sm-3</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20240306 15:11:32.022" level="INFO">Element 'css:.btn.get-btn.get-deal.go.order-sm-3' is displayed.</msg>
-<status status="PASS" starttime="20240306 15:11:31.983" endtime="20240306 15:11:32.022"/>
-</kw>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css:.btn.get-btn.get-code.go.order-sm-3</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20240306 15:11:32.042" level="INFO">Element 'css:.btn.get-btn.get-code.go.order-sm-3' is displayed.</msg>
-<status status="PASS" starttime="20240306 15:11:32.028" endtime="20240306 15:11:32.042"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:31.910" endtime="20240306 15:11:32.042"/>
-</kw>
-<kw name="Check Sort Verified" library="Storedetail_page">
-<kw name="Click Sort" library="Base">
-<arg>${Sort_Verified_Store}</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Sort_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:32.042" level="INFO">Clicking element 'css:div#jsFilter &gt; div:nth-of-type(2)'.</msg>
-<status status="PASS" starttime="20240306 15:11:32.042" endtime="20240306 15:11:33.655"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${sort_item}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.655" level="INFO">Clicking element 'css:.cover-sort &gt; li:nth-of-type(2)'.</msg>
-<status status="PASS" starttime="20240306 15:11:33.655" endtime="20240306 15:11:33.721"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:32.042" endtime="20240306 15:11:33.721"/>
-</kw>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css:div#verified-Coupons-of-${STORE_NAME}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20240306 15:11:33.737" level="INFO">Element 'css:div#verified-Coupons-of-Udemy' is displayed.</msg>
-<status status="PASS" starttime="20240306 15:11:33.723" endtime="20240306 15:11:33.737"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${tag_title}</var>
-<arg>xpath://div[@class='box-coupon'][1]/h2</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.751" level="INFO">${tag_title} = VERIFIED COUPONS OF UDEMY</msg>
-<status status="PASS" starttime="20240306 15:11:33.737" endtime="20240306 15:11:33.751"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${tag_title}</arg>
-<arg>VERIFIED COUPONS OF ${STORE_NAME_UPPER}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.751"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:32.042" endtime="20240306 15:11:33.751"/>
-</kw>
-<kw name="Check Sort Latest" library="Storedetail_page">
-<kw name="Click Sort" library="Base">
-<arg>${Sort_Latest_Store}</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Sort_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.751" level="INFO">Clicking element 'css:div#jsFilter &gt; div:nth-of-type(2)'.</msg>
-<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.780"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${sort_item}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.780" level="INFO">Clicking element 'css:.cover-sort &gt; li:nth-of-type(3)'.</msg>
-<status status="PASS" starttime="20240306 15:11:33.780" endtime="20240306 15:11:33.824"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.824"/>
-</kw>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css:div#latest-Coupons-of-${STORE_NAME}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20240306 15:11:33.840" level="INFO">Element 'css:div#latest-Coupons-of-Udemy' is displayed.</msg>
-<status status="PASS" starttime="20240306 15:11:33.824" endtime="20240306 15:11:33.840"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${tag_title}</var>
-<arg>xpath://div[@class='box-coupon'][1]/h2</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.848" level="INFO">${tag_title} = LATEST COUPONS OF UDEMY</msg>
-<status status="PASS" starttime="20240306 15:11:33.840" endtime="20240306 15:11:33.848"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${tag_title}</arg>
-<arg>LATEST COUPONS OF ${STORE_NAME_UPPER}</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.848"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:33.751" endtime="20240306 15:11:33.848"/>
-</kw>
-<kw name="Check Sort Best" library="Storedetail_page">
-<kw name="Click Sort" library="Base">
-<arg>${Sort_Best_Store}</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Sort_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.855" level="INFO">Clicking element 'css:div#jsFilter &gt; div:nth-of-type(2)'.</msg>
-<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.877"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${sort_item}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.877" level="INFO">Clicking element 'css:.cover-sort &gt; li:nth-of-type(1)'.</msg>
-<status status="PASS" starttime="20240306 15:11:33.877" endtime="20240306 15:11:33.935"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.935"/>
-</kw>
-<kw name="Element Should Be Visible" library="SeleniumLibrary">
-<arg>css:div#${STORE_NAME_ALIAS}-best-coupons</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<msg timestamp="20240306 15:11:33.952" level="INFO">Element 'css:div#udemy-best-coupons' is displayed.</msg>
-<status status="PASS" starttime="20240306 15:11:33.935" endtime="20240306 15:11:33.952"/>
-</kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${tag_title}</var>
-<arg>xpath://div[@class='box-coupon'][1]/h2</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.959" level="INFO">${tag_title} = BEST UDEMY COUPONS</msg>
-<status status="PASS" starttime="20240306 15:11:33.953" endtime="20240306 15:11:33.959"/>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<arg>${tag_title}</arg>
-<arg>BEST ${STORE_NAME_UPPER} COUPONS</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" starttime="20240306 15:11:33.959" endtime="20240306 15:11:33.959"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:33.848" endtime="20240306 15:11:33.959"/>
-</kw>
-<kw name="Check Jumpto Today's Top, page will scroll to &quot;box box-today-top&quot; class" library="Storedetail_page">
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<var>${before_scroll}</var>
-<arg>return [window.scrollX, window.scrollY]</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20240306 15:11:33.966" level="INFO">Executing JavaScript:
-return [window.scrollX, window.scrollY]
-Without any arguments.</msg>
-<msg timestamp="20240306 15:11:33.967" level="INFO">${before_scroll} = [0, 0]</msg>
-<status status="PASS" starttime="20240306 15:11:33.959" endtime="20240306 15:11:33.967"/>
-</kw>
-<kw name="Click JumpTo" library="Base">
-<arg>xpath:/html//div[@id='jsFilter']//a[@href='#${STORE_NAME_ALIAS}-today-top']</arg>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${JumpTo_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:33.967" level="INFO">Clicking element 'css:.item.jump'.</msg>
-<status status="PASS" starttime="20240306 15:11:33.967" endtime="20240306 15:11:34.013"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${jumpto_item}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:34.013" level="INFO">Clicking element 'xpath:/html//div[@id='jsFilter']//a[@href='#udemy-today-top']'.</msg>
-<status status="PASS" starttime="20240306 15:11:34.013" endtime="20240306 15:11:34.052"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:33.967" endtime="20240306 15:11:34.052"/>
-</kw>
-<kw name="Execute Javascript" library="SeleniumLibrary">
-<var>${after_scroll}</var>
-<arg>return [window.scrollX, window.scrollY]</arg>
-<doc>Executes the given JavaScript code with possible arguments.</doc>
-<msg timestamp="20240306 15:11:34.052" level="INFO">Executing JavaScript:
-return [window.scrollX, window.scrollY]
-Without any arguments.</msg>
-<msg timestamp="20240306 15:11:34.061" level="INFO">${after_scroll} = [0, 4618.2529296875]</msg>
-<status status="PASS" starttime="20240306 15:11:34.052" endtime="20240306 15:11:34.061"/>
-</kw>
-<kw name="Should Not Be Equal" library="BuiltIn">
-<arg>${before_scroll}</arg>
-<arg>${after_scroll}</arg>
-<doc>Fails if the given objects are equal.</doc>
-<status status="PASS" starttime="20240306 15:11:34.061" endtime="20240306 15:11:34.061"/>
-</kw>
-<kw name="Page Should Contain Element" library="SeleniumLibrary">
-<arg>css:.box-today-top</arg>
-<doc>Verifies that element ``locator`` is found on the current page.</doc>
-<msg timestamp="20240306 15:11:34.079" level="INFO">Current page contains element 'css:.box-today-top'.</msg>
-<status status="PASS" starttime="20240306 15:11:34.061" endtime="20240306 15:11:34.079"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:33.959" endtime="20240306 15:11:34.079"/>
-</kw>
-<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20240306 15:11:34.079" endtime="20240306 15:11:40.320"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:27.766" endtime="20240306 15:11:40.320"/>
-</test>
-<test id="s1-s1-s1-t5" name="Test case 05: Test click Get Code and not open affiliate in second time, all coupons visible" line="41">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>headless chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20240306 15:11:40.323" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
-<status status="PASS" starttime="20240306 15:11:40.323" endtime="20240306 15:11:42.343"/>
-</kw>
-<kw name="Get info of title box coupon" library="Storedetail_page">
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${title_cp}</var>
-<arg>${Title_FirstCP_Store}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:42.411" level="INFO">${title_cp} = Use This Udemy Coupon Code To Save Up To 85% OFF For Sitewide. Shop Now!</msg>
-<status status="PASS" starttime="20240306 15:11:42.343" endtime="20240306 15:11:42.411"/>
-</kw>
-<kw name="Convert To Lower Case" library="String">
-<var>${title_cp}</var>
-<arg>${title_cp}</arg>
-<doc>Converts string to lower case.</doc>
-<msg timestamp="20240306 15:11:42.411" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
-<status status="PASS" starttime="20240306 15:11:42.411" endtime="20240306 15:11:42.411"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${title_cp}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20240306 15:11:42.411" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
-<status status="PASS" starttime="20240306 15:11:42.411" endtime="20240306 15:11:42.411"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:42.343" endtime="20240306 15:11:42.411"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${Btn_GetCode_FirstCP}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:42.417" level="INFO">Clicking button 'xpah://button[@innertext='Get Code'][1]'.</msg>
-<msg timestamp="20240306 15:11:42.625" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-23.png"&gt;&lt;img src="selenium-screenshot-23.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20240306 15:11:42.625" level="FAIL">Button with locator 'xpah://button[@innertext='Get Code'][1]' not found.</msg>
-<status status="FAIL" starttime="20240306 15:11:42.411" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Switch Window" library="SeleniumLibrary">
-<arg>NEW</arg>
-<doc>Switches to browser window matching ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Assert title and link" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${Btn_Copy_Popup}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Action Copy code" library="Storedetail_page">
-<arg>${Btn_Copy_Popup}</arg>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Close_Popup}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Check all value coupon is visible" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${First_CopyBtn_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Action Copy code" library="Storedetail_page">
-<arg>${First_CopyBtn_Store}</arg>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Get info of title box coupon" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Title_FirstCP_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Assert title and link" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Btn_Copy_Popup}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Action Copy code" library="Storedetail_page">
-<arg>${Btn_Copy_Popup}</arg>
-<status status="NOT RUN" starttime="20240306 15:11:42.681" endtime="20240306 15:11:42.681"/>
-</kw>
-<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20240306 15:11:42.681" endtime="20240306 15:11:48.903"/>
-</kw>
-<status status="FAIL" starttime="20240306 15:11:40.320" endtime="20240306 15:11:48.903">Button with locator 'xpah://button[@innertext='Get Code'][1]' not found.</status>
-</test>
-<test id="s1-s1-s1-t6" name="Test case 06: Test click Get Deal" line="61">
-<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
-<arg>${url}</arg>
-<arg>headless chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20240306 15:11:48.903" level="INFO">Opening browser 'headless chrome' to base url 'https://udemy.tenereteam.com/coupons'.</msg>
-<status status="PASS" starttime="20240306 15:11:48.903" endtime="20240306 15:11:52.794"/>
-</kw>
-<kw name="Get info of title box coupon" library="Storedetail_page">
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${title_cp}</var>
-<arg>${Title_FirstCP_Store}</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:52.813" level="INFO">${title_cp} = Use This Udemy Coupon Code To Save Up To 85% OFF For Sitewide. Shop Now!</msg>
-<status status="PASS" starttime="20240306 15:11:52.795" endtime="20240306 15:11:52.813"/>
-</kw>
-<kw name="Convert To Lower Case" library="String">
-<var>${title_cp}</var>
-<arg>${title_cp}</arg>
-<doc>Converts string to lower case.</doc>
-<msg timestamp="20240306 15:11:52.813" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
-<status status="PASS" starttime="20240306 15:11:52.813" endtime="20240306 15:11:52.813"/>
-</kw>
-<kw name="Set Global Variable" library="BuiltIn">
-<arg>${title_cp}</arg>
-<doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20240306 15:11:52.813" level="INFO">${title_cp} = use this udemy coupon code to save up to 85% off for sitewide. shop now!</msg>
-<status status="PASS" starttime="20240306 15:11:52.813" endtime="20240306 15:11:52.813"/>
-</kw>
-<status status="PASS" starttime="20240306 15:11:52.794" endtime="20240306 15:11:52.813"/>
-</kw>
-<kw name="Click Button" library="SeleniumLibrary">
-<arg>${Btn_GetDeal_FirstCP}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<msg timestamp="20240306 15:11:52.819" level="INFO">Clicking button 'xpath://button[@innertext='Get Deal'][1]'.</msg>
-<msg timestamp="20240306 15:11:52.911" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-24.png"&gt;&lt;img src="selenium-screenshot-24.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg timestamp="20240306 15:11:52.911" level="FAIL">Button with locator 'xpath://button[@innertext='Get Deal'][1]' not found.</msg>
-<status status="FAIL" starttime="20240306 15:11:52.813" endtime="20240306 15:11:52.911"/>
-</kw>
-<kw name="Switch Window" library="SeleniumLibrary">
-<arg>NEW</arg>
-<doc>Switches to browser window matching ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
-</kw>
-<kw name="Assert title and link" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
-</kw>
-<kw name="Check info of Popup Get Deal" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Close_Popup}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
-</kw>
-<kw name="Check all value coupon is visible" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${First_CopyBtn_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:52.911" endtime="20240306 15:11:52.911"/>
-</kw>
-<kw name="Action Copy code" library="Storedetail_page">
-<arg>${First_CopyBtn_Store}</arg>
-<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
-</kw>
-<kw name="Get info of title box coupon" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Title_FirstCP_Store}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
-</kw>
-<kw name="Assert title and link" library="Storedetail_page">
-<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${Btn_Copy_Popup}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" starttime="20240306 15:11:52.917" endtime="20240306 15:11:52.917"/>
-</kw>
-<kw name="Action Copy code" library="Storedetail_page">
-<arg>${Btn_Copy_Popup}</arg>
-<status status="NOT RUN" starttime="20240306 15:11:52.918" endtime="20240306 15:11:52.918"/>
-</kw>
-<kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
-<doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20240306 15:11:52.918" endtime="20240306 15:11:59.119"/>
-</kw>
-<status status="FAIL" starttime="20240306 15:11:48.903" endtime="20240306 15:11:59.119">Button with locator 'xpath://button[@innertext='Get Deal'][1]' not found.</status>
-</test>
-<doc>Testcases for Review page Tenere V2</doc>
-<status status="FAIL" starttime="20240306 15:10:56.422" endtime="20240306 15:11:59.119"/>
-</suite>
-<status status="FAIL" starttime="20240306 15:10:56.421" endtime="20240306 15:11:59.119"/>
-</suite>
-<status status="FAIL" starttime="20240306 15:10:56.402" endtime="20240306 15:11:59.125"/>
-</suite>
-<statistics>
-<total>
-<stat pass="3" fail="3" skip="0">All Tests</stat>
-</total>
-<tag>
-</tag>
-<suite>
-<stat pass="3" fail="3" skip="0" id="s1" name="TenereV2 RobotFramework">TenereV2 RobotFramework</stat>
-<stat pass="3" fail="3" skip="0" id="s1-s1" name="Tests">TenereV2 RobotFramework.Tests</stat>
-<stat pass="3" fail="3" skip="0" id="s1-s1-s1" name="test Store detail">TenereV2 RobotFramework.Tests.test Store detail</stat>
-</suite>
-</statistics>
-<errors>
-</errors>
-</robot>
+<arg>${meta_desc}</arg>
+<arg>

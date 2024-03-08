@@ -7,7 +7,7 @@ Library            String
 Variables          ../../testdata/test_data.py
 
 *** Variable ***
-${base_url}    ${DOMAIN2}/api/
+${base_url}    ${DOMAIN_API}/api/
 ${AUTH}        Basic Auth
 # Headers
 ${CONTENT_TYPE}    application/json
@@ -82,8 +82,8 @@ Check info of Store
     Should Not Be Empty    ${respone.json()}[data]    coupons_count
     Should Not Be Empty    ${respone.json()}[data]    about
     Should Not Be Empty    ${respone.json()}[data]    aboutOurStore
-    Should Not Be Empty    ${respone.json()}[data][jsonDescription]    title
-    Should Not Be Empty    ${respone.json()}[data][jsonDescription]    description
+    Should Not Be Empty    ${respone.json()}[data][guides]    title
+    Should Not Be Empty    ${respone.json()}[data][guides]    description
     Should Not Be Empty    ${respone.json()}[data]    similar_store
     Should Not Be Empty    ${respone.json()}[data]    h1_title
     Should Not Be Empty    ${respone.json()}[data]    faqs
