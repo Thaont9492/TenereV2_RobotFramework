@@ -1,4 +1,4 @@
-*** Setting ***
+*** Settings ***
 Documentation    Testcase Review API
 Resource    ../Resource/Review_API.robot
 Suite Setup    Connect To Review API

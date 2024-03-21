@@ -1,4 +1,4 @@
-*** Setting ***
+*** Settings ***
 Documentation    Testcase Store API
 Resource    ../Resource/Storedetail_API.robot
 Suite Setup    Connect To Store API

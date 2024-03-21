@@ -1,4 +1,4 @@
-*** Setting ***
+*** Settings ***
 Documentation    A resource file with reusable keywords ana variables
 ...
 ...             The system specific keywords created here form our own
@@ -7,12 +7,12 @@ Documentation    A resource file with reusable keywords ana variables
 Library         SeleniumLibrary
 Library         Collections
 Library         DateTime
-Library         page_objects/LambdaTestStatus.py
+Library         ../page_objects/LambdaTestStatus.py
 Variables        ../testdata/locators.py
 Variables        ../testdata/test_data.py
 Resource         ../API/Resource/Storedetail_API.robot
 
-*** Variable ***
+*** Variables ***
 ${month}
 ${year}
 

@@ -1,4 +1,4 @@
-*** Setting ***
+*** Settings ***
 Documentation    Testcases for Review page Tenere V2
 ...
 ...
@@ -10,7 +10,7 @@ Variables       ../testdata/locators.py
 Test Setup      Open Browser    ${url}    headless chrome
 Test Teardown    Close All Browsers
 
-*** Variable ***
+*** Variables ***
 ${url}            ${REVIEW_URL}
 
 *** Keywords ***

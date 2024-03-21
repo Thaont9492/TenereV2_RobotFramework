@@ -23,12 +23,30 @@ pip install webdrivermanager
 3. Test Store Detail - KFS
 
 # Run Test
+<!-- Window -->
 1. Run API Test for Review and Store Detail:  robot .\API\Tests\*
 2. Run Review_TestCasesAPI: robot .\API\Tests\Review_TestCasesAPI.robot
 3. Run Storedetail_TestCasesAPI: robot .\API\Tests\Store_TestCasesAPI.robot
-4. Run Test case for Review and Store Dtail: robot .\tests\*
+4. Run Test case for Review and Store Detail: robot .\tests\*
 4. Run Test Review Page: robot .\tests\test_Review_page.robot
 5. Run Test Store Detail: robot .\tests\test_Store_detail.robot
+
+<!-- Mac OS -->
+1. Run API Test for Review and Store Detail: robot API/Tests/*
+2. Run Review_TestCasesAPI: robot API/Tests/Review_TestCasesAPI.robot
+3. Run Storedetail_TestCasesAPI: robot API/Tests/Store_TestCasesAPI.robot
+4. Run Test case for Review and Store Detail: robot tests/*
+4. Run Test Review Page: robot tests/test_Review_page.robot
+5. Run Test Store Detail: robot tests/test_Store_detail.robot
+
+<!--  All in 1:
+robot API/Tests/*; 
+robot API/Tests/Review_TestCasesAPI.robot;
+robot API/Tests/Store_TestCasesAPI.robot;
+robot tests/*;
+robot tests/test_Review_page.robot;
+robot tests/test_Store_detail.robot;
+-->
 
 # Change info
 1. Change domain, store name for test cases in .\testdata\test_data.py

@@ -1,4 +1,4 @@
-*** Setting ***
+*** Settings ***
 Documentation    All APIs for Review Page
 Library            RequestsLibrary
 Library            Collections
@@ -6,7 +6,7 @@ Library            String
 Library            JSONLibrary
 Variables          ../../testdata/test_data.py
 
-*** Variable ***
+*** Variables ***
 ${base_url}    ${DOMAIN_API}/api/
 ${AUTH}        Basic Auth
 # Headers

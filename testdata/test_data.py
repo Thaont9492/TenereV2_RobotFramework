@@ -1,6 +1,12 @@
+# for "tenereteam.com" website
 LINK = "tenereteam.com"
-SITE_NAME = "TenereTeam"
 AUTHENTICATION = ""
+
+# for domain test "couponmay.com" website
+# LINK = "couponmay.com"
+# AUTHENTICATION = "bogo:onads@"
+
+SITE_NAME = "TenereTeam"
 STORE_NAME = "Udemy"
 STORE_NAME_UPPER = "UDEMY"
 STORE_NAME_ALIAS = "udemy"

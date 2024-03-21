@@ -1,4 +1,4 @@
-*** Setting ***
+*** Settings ***
 Documentation    All Tests for Review Page Tenere V2
 ...
 ...
@@ -12,7 +12,7 @@ Variables        ../testdata/test_data.py
 Resource         ../API/Resource/Storedetail_API.robot
 Resource         Base.robot
 
-*** Variable ***
+*** Variables ***
 ${title_cp}
 
 *** Keywords ***
@@ -20,7 +20,7 @@ ${title_cp}
 Remove Trailing Non-Numeric
     [Arguments]    ${string}
     ${new_string}=    Replace String Using Regexp    ${string}    \\D*$    ${EMPTY}
-    [Return]    ${new_string}
+    RETURN    ${new_string}
 
 Sort Dates
     [Arguments]    ${date_objects}
@@ -30,7 +30,7 @@ Sort Dates
         ${date_str}=    Format Date    ${date_obj}    result_format=%B %d, %Y
         Append To List    ${sorted_dates}    ${date_str}
     END
-    [Return]    ${sorted_dates}
+    RETURN    ${sorted_dates}
 
 # Testcase 01
 Check Title and Meta Desc and Canonical
